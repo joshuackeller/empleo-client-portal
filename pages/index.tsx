@@ -12,7 +12,7 @@ export default function Home() {
     const fetchData = async (subdomain: string) => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/client/organizations/${subdomain}`,
+          `${process.env.NEXT_PUBLIC_API_URL}/organizations/${subdomain}`,
         );
 
         setOrganization(response?.data);
