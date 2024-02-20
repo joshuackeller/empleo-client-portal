@@ -2,14 +2,15 @@ import React from "react";
 import useGetOrganization from "@/src/requests/organizations/useGetOrganization";
 import { Button } from "@/src/components/shadcn/Button";
 import { Separator } from "@/src/components/shadcn/Separator";
+import { Layout } from "@/src/utilities/interfaces";
 
 export default function Home() {
   const { data: organization } = useGetOrganization();
-  const isLayoutOne = (organization as any)?.layout === "one";
-  const isLayoutTwo = (organization as any)?.layout === "two";
-  const isLayoutThree = (organization as any)?.layout === "three";
-  const isLayoutFour = (organization as any)?.layout === "four";
-  const isLayoutFive = (organization as any)?.layout === "five";
+  const isLayoutOne = organization?.layout === Layout.one;
+  const isLayoutTwo = organization?.layout === Layout.two;
+  const isLayoutThree = organization?.layout === Layout.three;
+  const isLayoutFour = organization?.layout === Layout.four;
+  const isLayoutFive = organization?.layout === Layout.five;
 
   return (
     // Layout #1
@@ -50,7 +51,7 @@ export default function Home() {
 
         <div className="relative">
           <img
-            src={(organization as any)?.banner?.url}
+            src={organization?.banner?.url}
             alt="Organization Banner"
             className="w-full h-48 object-cover"
           />
@@ -141,7 +142,7 @@ export default function Home() {
 
         <div className="relative">
           <img
-            src={(organization as any)?.banner?.url}
+            src={organization?.banner?.url}
             alt="Organization Banner"
             className="w-full h-48 object-cover"
           />
@@ -286,7 +287,7 @@ export default function Home() {
 
         <div className="relative">
           <img
-            src={(organization as any)?.banner?.url}
+            src={organization?.banner?.url}
             alt="Organization Banner"
             className="w-full h-48 object-cover"
           />
