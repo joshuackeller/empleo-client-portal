@@ -59,7 +59,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>{organization?.title}</title>
       </Head>
       <main className={cn("font-sans", inter.variable)}>
-        <div>{organization?.title}</div>
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
           <ReactQueryDevtools />
