@@ -3,6 +3,8 @@ import useGetOrganization from "@/src/requests/organizations/useGetOrganization"
 import { Button } from "@/src/components/shadcn/Button";
 import { Separator } from "@/src/components/shadcn/Separator";
 import { Layout } from "@/src/utilities/interfaces";
+import ListingsCards from "@/src/components/tables/ListingsCards";
+import LimitedListingCards from "@/src/components/tables/LimitedListingCards";
 
 export default function Home() {
   const { data: organization } = useGetOrganization();
@@ -28,19 +30,23 @@ export default function Home() {
             className="w-16 h-16"
           />
           <div>
-            <Button
-              variant="outline"
-              className="mr-4"
-              style={{ borderColor: organization?.accentColor || undefined }}
-            >
-              About
-            </Button>
-            <Button
-              variant="outline"
-              style={{ borderColor: organization?.accentColor || undefined }}
-            >
-              Job Listings
-            </Button>
+            <a href="/" className="mr-4">
+              <Button
+                variant="outline"
+                className="mr-4"
+                style={{ borderColor: organization?.accentColor || undefined }}
+              >
+                About
+              </Button>
+            </a>
+            <a href="/listings" className="mr-4">
+              <Button
+                variant="outline"
+                style={{ borderColor: organization?.accentColor || undefined }}
+              >
+                Job Listings
+              </Button>
+            </a>
           </div>
         </div>
 
@@ -73,13 +79,18 @@ export default function Home() {
             <h2 className={`text-2xl font-bold text-${organization?.bodyFont}`}>
               Current Job Openings
             </h2>
-            <Button
-              className="!mt-2"
-              style={{ backgroundColor: organization?.secondaryColor || "" }}
-              type="button"
-            >
-              View All Job Listings
-            </Button>
+            <div className="text-left">
+              <LimitedListingCards limit={2} />
+            </div>
+            <a href="/listings">
+              <Button
+                className="!mt-2"
+                style={{ backgroundColor: organization?.secondaryColor || "" }}
+                type="button"
+              >
+                View All Job Listings
+              </Button>
+            </a>
           </section>
         </main>
         <footer
@@ -118,19 +129,27 @@ export default function Home() {
               </h1>
             </div>
             <div>
-              <Button
-                variant="outline"
-                className="mr-4"
-                style={{ borderColor: organization?.accentColor || undefined }}
-              >
-                About
-              </Button>
-              <Button
-                variant="outline"
-                style={{ borderColor: organization?.accentColor || undefined }}
-              >
-                Job Listings
-              </Button>
+              <a href="/" className="mr-4">
+                <Button
+                  variant="outline"
+                  className="mr-4"
+                  style={{
+                    borderColor: organization?.accentColor || undefined,
+                  }}
+                >
+                  About
+                </Button>
+              </a>
+              <a href="/listings" className="mr-4">
+                <Button
+                  variant="outline"
+                  style={{
+                    borderColor: organization?.accentColor || undefined,
+                  }}
+                >
+                  Job Listings
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -163,13 +182,18 @@ export default function Home() {
             <h2 className={`text-2xl font-bold text-${organization?.bodyFont}`}>
               Current Job Openings
             </h2>
-            <Button
-              className="!mt-2"
-              style={{ backgroundColor: organization?.secondaryColor || "" }}
-              type="button"
-            >
-              View All Job Listings
-            </Button>
+            <div className="text-left">
+              <LimitedListingCards limit={2} />
+            </div>
+            <a href="/listings">
+              <Button
+                className="!mt-2"
+                style={{ backgroundColor: organization?.secondaryColor || "" }}
+                type="button"
+              >
+                View All Job Listings
+              </Button>
+            </a>
           </section>
         </main>
         <footer
@@ -196,19 +220,23 @@ export default function Home() {
             className="w-16 h-16"
           />
           <div>
-            <Button
-              variant="outline"
-              className="mr-4"
-              style={{ borderColor: organization?.accentColor || undefined }}
-            >
-              About
-            </Button>
-            <Button
-              variant="outline"
-              style={{ borderColor: organization?.accentColor || undefined }}
-            >
-              Job Listings
-            </Button>
+            <a href="/" className="mr-4">
+              <Button
+                variant="outline"
+                className="mr-4"
+                style={{ borderColor: organization?.accentColor || undefined }}
+              >
+                About
+              </Button>
+            </a>
+            <a href="/listings" className="mr-4">
+              <Button
+                variant="outline"
+                style={{ borderColor: organization?.accentColor || undefined }}
+              >
+                Job Listings
+              </Button>
+            </a>
           </div>
         </div>
 
@@ -226,13 +254,18 @@ export default function Home() {
           <h2 className={`text-2xl font-bold text-${organization?.bodyFont}`}>
             Current Job Openings
           </h2>
-          <Button
-            className="!mt-2"
-            style={{ backgroundColor: organization?.secondaryColor || "" }}
-            type="button"
-          >
-            View All Job Listings
-          </Button>
+          <div className="text-left w-5/6">
+            <LimitedListingCards limit={2} />
+          </div>
+          <a href="/listings">
+            <Button
+              className="!mt-2"
+              style={{ backgroundColor: organization?.secondaryColor || "" }}
+              type="button"
+            >
+              View All Job Listings
+            </Button>
+          </a>
         </section>
         <footer
           className={`mt-8 py-4 text-${organization?.bodyFont} text-center w-full`}
@@ -258,23 +291,23 @@ export default function Home() {
             className="w-12 h-12"
           />
           <div>
-            <Button
-              variant="outline"
-              className="mr-4"
-              style={{
-                borderColor: organization?.accentColor || undefined,
-              }}
-            >
-              About
-            </Button>
-            <Button
-              variant="outline"
-              style={{
-                borderColor: organization?.accentColor || undefined,
-              }}
-            >
-              Job Listings
-            </Button>
+            <a href="/" className="mr-4">
+              <Button
+                variant="outline"
+                className="mr-4"
+                style={{ borderColor: organization?.accentColor || undefined }}
+              >
+                About
+              </Button>
+            </a>
+            <a href="/listings" className="mr-4">
+              <Button
+                variant="outline"
+                style={{ borderColor: organization?.accentColor || undefined }}
+              >
+                Job Listings
+              </Button>
+            </a>
           </div>
         </div>
 
@@ -315,15 +348,20 @@ export default function Home() {
             >
               Current Job Openings
             </h2>
-            <Button
-              className="!mt-2"
-              style={{
-                backgroundColor: organization?.secondaryColor || "",
-              }}
-              type="button"
-            >
-              View All Job Listings
-            </Button>
+            <div className="text-left">
+              <LimitedListingCards limit={2} />
+            </div>
+            <a href="/listings">
+              <Button
+                className="!mt-2"
+                style={{
+                  backgroundColor: organization?.secondaryColor || "",
+                }}
+                type="button"
+              >
+                View All Job Listings
+              </Button>
+            </a>
           </section>
         </main>
         <footer
@@ -350,23 +388,23 @@ export default function Home() {
             className="w-12 h-12"
           />
           <div>
-            <Button
-              variant="outline"
-              className="mr-4"
-              style={{
-                borderColor: organization?.accentColor || undefined,
-              }}
-            >
-              About
-            </Button>
-            <Button
-              variant="outline"
-              style={{
-                borderColor: organization?.accentColor || undefined,
-              }}
-            >
-              Job Listings
-            </Button>
+            <a href="/" className="mr-4">
+              <Button
+                variant="outline"
+                className="mr-4"
+                style={{ borderColor: organization?.accentColor || undefined }}
+              >
+                About
+              </Button>
+            </a>
+            <a href="/listings" className="mr-4">
+              <Button
+                variant="outline"
+                style={{ borderColor: organization?.accentColor || undefined }}
+              >
+                Job Listings
+              </Button>
+            </a>
           </div>
         </div>
 
@@ -393,15 +431,20 @@ export default function Home() {
           <h2 className={`text-2xl font-bold text-${organization?.bodyFont}`}>
             Current Job Openings
           </h2>
-          <Button
-            className="!mt-2"
-            style={{
-              backgroundColor: organization?.secondaryColor || "",
-            }}
-            type="button"
-          >
-            View All Job Listings
-          </Button>
+          <div className="text-left w-5/6">
+            <LimitedListingCards limit={2} />
+          </div>
+          <a href="/listings">
+            <Button
+              className="!mt-2"
+              style={{
+                backgroundColor: organization?.secondaryColor || "",
+              }}
+              type="button"
+            >
+              View All Job Listings
+            </Button>
+          </a>
         </section>
         <footer
           className={`mt-8 py-4 text-${organization?.bodyFont} text-center w-full`}
