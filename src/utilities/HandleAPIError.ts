@@ -1,7 +1,6 @@
 import capitalize from "./capitalize";
 
 const HandleAPIError = (error: any): string => {
-  console.log("HEY", error as any);
   let errorMessage = "Unknown Error";
 
   if (!!error?.response?.data) {

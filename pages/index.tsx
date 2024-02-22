@@ -1,6 +1,13 @@
 import useGetOrganization from "@/src/requests/organizations/useGetOrganization";
 
-export default function Home() {
+const HomePage = () => {
   const { data: organization } = useGetOrganization();
-  return <div>{organization?.title}</div>;
-}
+  return (
+    <div>
+      <h1>{organization?.title}</h1>
+      <a href="/listings">Listings</a>
+    </div>
+  );
+};
+
+export default HomePage;

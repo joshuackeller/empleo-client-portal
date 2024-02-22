@@ -8,6 +8,7 @@ import Head from "next/head";
 import { cn } from "@/src/utilities/cn";
 import { Toaster } from "@/src/components/shadcn/toaster";
 import { GetOrganization } from "@/src/requests/organizations/useGetOrganization";
+import AuthWrapper from "@/src/components/wrappers/AuthWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -59,11 +60,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>{organization?.title}</title>
       </Head>
       <main className={cn("font-sans", inter.variable)}>
-        <div>{organization?.title}</div>
         <QueryClientProvider client={queryClient}>
-          <Component {...pageProps} />
-          <ReactQueryDevtools />
-          <Toaster />
+          <AuthWrapper>
+            <Component {...pageProps} />
+            <ReactQueryDevtools />
+            <Toaster />
+          </AuthWrapper>
         </QueryClientProvider>
       </main>
     </>
