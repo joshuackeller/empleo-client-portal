@@ -1,7 +1,6 @@
 import React from "react";
 import useGetListing from "@/src/requests/listings/useGetListing";
 import { useRouter } from "next/router";
-import { Button } from "@/src/components/shadcn/Button";
 import ApplicationForm from "@/src/components/forms/applicationForm";
 import RestrictedContentWrapper from "@/src/components/wrappers/RestrictedContentWrapper";
 
@@ -35,7 +34,7 @@ const ListingDetails = () => {
           <p className="!my-0">{data.jobRequirements}</p>
           <p className="!my-0">{data.location}</p>
         </div>
-        <RestrictedContentWrapper>
+        <RestrictedContentWrapper actionText="Apply Now">
           <ApplicationForm />
         </RestrictedContentWrapper>
       </div>

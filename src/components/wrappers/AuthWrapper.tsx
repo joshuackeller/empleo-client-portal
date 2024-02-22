@@ -50,7 +50,7 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
     >
       {children}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-sm">
           <DialogHeader>
             <DialogTitle>Get Started</DialogTitle>
             <DialogDescription>

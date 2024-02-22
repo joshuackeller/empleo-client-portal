@@ -14,6 +14,8 @@ import { Button } from "../shadcn/Button";
 import useRequestLink from "@/src/requests/auth/useRequestLink";
 import { CheckCircle2Icon, CircleDashedIcon } from "lucide-react";
 import { useRouter } from "next/router";
+import Turnstile from "react-turnstile";
+import { useState } from "react";
 
 const formSchema = z.object({
   email: z.string(),
@@ -31,11 +33,14 @@ const RequestLinkForm = () => {
 
   const { asPath } = useRouter();
 
+  const [cloudflareToken, setCloudflareToken] = useState<string>("");
+
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     if (!isPending) {
       requestLink({
         body: {
           ...values,
+          cloudflareToken,
           returnRoute: asPath,
         },
       });
@@ -67,6 +72,13 @@ const RequestLinkForm = () => {
             </FormItem>
           )}
         />
+        <Turnstile
+          sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}
+          onVerify={(token: any) => {
+            setCloudflareToken(token);
+          }}
+        />
+
         <div>
           <Button disabled={isPending} type="submit" className="w-full">
             Send Link

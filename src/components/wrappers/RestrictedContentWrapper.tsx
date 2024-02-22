@@ -1,12 +1,15 @@
 import useAuthContext from "@/src/utilities/useAuthContext";
 import { ReactNode, useEffect, useState } from "react";
 import { Button } from "../shadcn/Button";
+
 interface RestrictedContentWrapperProps {
   children: ReactNode;
+  actionText?: string;
 }
 
 const RestrictedContentWrapper = ({
   children,
+  actionText = "Get Started",
 }: RestrictedContentWrapperProps) => {
   let [mounted, setMounted] = useState<boolean>(false);
 
@@ -24,7 +27,7 @@ const RestrictedContentWrapper = ({
         <div>{children}</div>
       ) : (
         <div>
-          <Button onClick={() => setAuthModalOpen(true)}>Get Started</Button>
+          <Button onClick={() => setAuthModalOpen(true)}>{actionText}</Button>
         </div>
       )}
     </div>

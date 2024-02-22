@@ -5,6 +5,7 @@ interface RequestLinkProps {
   body: {
     email: string;
     returnRoute: string;
+    cloudflareToken: string;
   };
 }
 
