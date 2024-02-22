@@ -71,7 +71,7 @@ const RequestLinkForm = () => {
           <Button disabled={isPending} type="submit" className="w-full">
             Send Link
             {isPending && (
-              <CircleDashedIcon className="mr-2 h-4 w-4 animate-spin" />
+              <CircleDashedIcon className="h-4 w-4 animate-spin ml-2" />
             )}
           </Button>
         </div>
