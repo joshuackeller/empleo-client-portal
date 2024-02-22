@@ -19,6 +19,7 @@ export const AUTH_TOKEN = "AUTH_TOKEN";
 
 interface AuthContextProps {
   token: string | null;
+  setToken: Dispatch<SetStateAction<string | null>>;
   setAuthModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -44,7 +45,9 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ token, setAuthModalOpen: setOpen }}>
+    <AuthContext.Provider
+      value={{ token, setToken, setAuthModalOpen: setOpen }}
+    >
       {children}
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-[425px]">
