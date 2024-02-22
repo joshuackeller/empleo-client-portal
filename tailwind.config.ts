@@ -21,7 +21,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", ...fontFamily.sans],
+        sans: ["Inter", ...fontFamily.sans],
         serif: ["Noto Serif", "serif"],
         patua: ["Patua One", "serif"],
       },
@@ -85,4 +85,3 @@ const config = {
 } satisfies Config;
 
 export default config;
-

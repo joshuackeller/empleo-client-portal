@@ -20,7 +20,6 @@ const useCustomMutation = <
     {
       ...options,
       onError: (error) => {
-        console.log("HERE FIRST", error);
         toast({
           variant: "destructive",
           title: HandleAPIError(error),

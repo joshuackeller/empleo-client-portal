@@ -3,10 +3,9 @@ import useGetOrganization from "@/src/requests/organizations/useGetOrganization"
 import { Button } from "@/src/components/shadcn/Button";
 import { Separator } from "@/src/components/shadcn/Separator";
 import { Layout } from "@/src/utilities/interfaces";
-import ListingsCards from "@/src/components/tables/ListingsCards";
 import LimitedListingCards from "@/src/components/tables/LimitedListingCards";
 
-export default function Home() {
+const HomePage = () => {
   const { data: organization } = useGetOrganization();
   const isLayoutOne = organization?.layout === Layout.one;
   const isLayoutTwo = organization?.layout === Layout.two;
@@ -457,4 +456,6 @@ export default function Home() {
       </div>
     ) : null
   );
-}
+};
+
+export default HomePage;
