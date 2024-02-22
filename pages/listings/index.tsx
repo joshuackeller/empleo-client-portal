@@ -8,6 +8,7 @@ const ListingsPage: PageComponent = () => {
   return (
     <div>
       <div>
+        <h2>Job Listings</h2>
         <ListingsCards />
       </div>
     </div>
