@@ -3,6 +3,7 @@ import useGetListing from "@/src/requests/listings/useGetListing";
 import { useRouter } from "next/router";
 import { Button } from "@/src/components/shadcn/Button";
 import ApplicationForm from "@/src/components/forms/applicationForm";
+import RestrictedContentWrapper from "@/src/components/wrappers/RestrictedContentWrapper";
 
 const ListingDetails = () => {
   const router = useRouter();
@@ -22,27 +23,21 @@ const ListingDetails = () => {
   }
 
   return (
-    <div>
+    <div className="p-5 max-w-xl mx-auto">
       <div>
-        <h2>{data.jobTitle}</h2>
-        <p>{data.jobDescription}</p>
-        <p>{data.salaryRange}</p>
-        <p>{data.jobRequirements}</p>
-        <p>{data.location}</p>
+        <a href="/listings">&larr; All Listings</a>
       </div>
-      <ApplicationForm />
-      <div className="flex justify-start mt-3 mb-4">
-        <Button
-          variant={"outline"}
-          disabled={isPending}
-          type="submit"
-          onClick={(event) => {
-            event.preventDefault();
-            router.push("/listings");
-          }}
-        >
-          Back to Listings
-        </Button>
+      <div>
+        <div>
+          <h2>{data.jobTitle}</h2>
+          <p className="!my-0">{data.jobDescription}</p>
+          <p className="!my-0">{data.salaryRange}</p>
+          <p className="!my-0">{data.jobRequirements}</p>
+          <p className="!my-0">{data.location}</p>
+        </div>
+        <RestrictedContentWrapper>
+          <ApplicationForm />
+        </RestrictedContentWrapper>
       </div>
     </div>
   );

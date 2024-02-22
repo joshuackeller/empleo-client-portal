@@ -12,7 +12,7 @@ import {
 import { Input } from "../shadcn/Input";
 import { Button } from "../shadcn/Button";
 import useRequestLink from "@/src/requests/auth/useRequestLink";
-import { CheckCircle2Icon } from "lucide-react";
+import { CheckCircle2Icon, CircleDashedIcon } from "lucide-react";
 import { useRouter } from "next/router";
 
 const formSchema = z.object({
@@ -27,17 +27,19 @@ const RequestLinkForm = () => {
     },
   });
 
-  const { mutate: requestLink, isSuccess } = useRequestLink();
+  const { mutate: requestLink, isPending, isSuccess } = useRequestLink();
 
   const { asPath } = useRouter();
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    requestLink({
-      body: {
-        ...values,
-        returnRoute: asPath,
-      },
-    });
+    if (!isPending) {
+      requestLink({
+        body: {
+          ...values,
+          returnRoute: asPath,
+        },
+      });
+    }
   };
 
   if (isSuccess) {
@@ -66,8 +68,11 @@ const RequestLinkForm = () => {
           )}
         />
         <div>
-          <Button type="submit" className="w-full">
+          <Button disabled={isPending} type="submit" className="w-full">
             Send Link
+            {isPending && (
+              <CircleDashedIcon className="mr-2 h-4 w-4 animate-spin" />
+            )}
           </Button>
         </div>
       </form>
