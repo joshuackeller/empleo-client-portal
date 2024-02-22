@@ -9,6 +9,7 @@ import { cn } from "@/src/utilities/cn";
 import { Toaster } from "@/src/components/shadcn/toaster";
 import { GetOrganization } from "@/src/requests/organizations/useGetOrganization";
 import AuthWrapper from "@/src/components/wrappers/AuthWrapper";
+import { NextComponentType } from "next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,6 +25,11 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+export type PageComponent = NextComponentType & {
+  layout?: "auth" | "normal";
+  title?: string;
+};
 
 export default function App({ Component, pageProps }: AppProps) {
   const [organization, setOrganization] = useState<any>();
