@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const ConfirmAccountPage = () => {
+  const router = useRouter();
   const {
-    push,
     query: { token: routerToken, returnRoute },
   } = useRouter();
 
@@ -12,9 +12,11 @@ const ConfirmAccountPage = () => {
     if (typeof window !== "undefined") {
       if (!!routerToken) {
         localStorage.setItem(AUTH_TOKEN, routerToken as string);
-        push(returnRoute as string);
+        setTimeout(function () {
+          router.push(returnRoute as string);
+        }, 5000);
       } else {
-        push("/auth_error");
+        router.push("/auth_error");
       }
     }
   }, [routerToken]);
