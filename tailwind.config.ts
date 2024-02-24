@@ -20,6 +20,9 @@ const config = {
       },
     },
     extend: {
+      backgroundOpacity: {
+        "25": "0.25",
+      },
       fontFamily: {
         sans: ["Inter", ...fontFamily.sans],
         serif: ["Noto Serif", "serif"],

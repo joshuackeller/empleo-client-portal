@@ -7,7 +7,9 @@ interface GetListingProps {
   listingId: string;
 }
 
-const GetListing = async ({ listingId }: GetListingProps): Promise<Listing> => {
+export const GetListing = async ({
+  listingId,
+}: GetListingProps): Promise<Listing> => {
   const api = useEmpleoApi();
 
   const { data } = await api.get(`/listings/${listingId}`);
