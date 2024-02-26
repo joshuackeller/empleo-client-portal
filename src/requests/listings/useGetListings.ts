@@ -3,12 +3,20 @@ import useEmpleoApi from "../useEmpleoApi";
 import { useQuery } from "@tanstack/react-query";
 import ListingsKeys from ".";
 
-interface GetListingsProps {}
+interface GetListingsProps {
+  search?: string;
+}
 
-export const GetListings = async ({}: GetListingsProps): Promise<Listing[]> => {
+export const GetListings = async ({
+  search,
+}: GetListingsProps): Promise<Listing[]> => {
   const api = useEmpleoApi();
 
-  const { data } = await api.get(`/listings`);
+  const { data } = await api.get(`/listings`, {
+    params: {
+      search,
+    },
+  });
 
   return data;
 };

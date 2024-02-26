@@ -3,7 +3,7 @@ import { cn } from "@/src/utilities/cn";
 import { headers } from "next/headers";
 import Link from "next/link";
 
-const SingleListingPage = async ({
+const SingleListingApplicationPage = async ({
   params: { listingId },
 }: { params: { listingId: string } }) => {
   const listing = await GetListing({ listingId });
@@ -26,9 +26,9 @@ const SingleListingPage = async ({
           Application
         </Link>
       </div>
-      <div>{listing.jobDescription}</div>
+      <div>form</div>
     </>
   );
 };
 
-export default SingleListingPage;
+export default SingleListingApplicationPage;

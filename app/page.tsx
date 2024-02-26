@@ -29,7 +29,7 @@ const HomePage = async () => {
         <div className="radial-gradient-accent h-[500px] w-[500px] absolute translate-x-1/4" />
       </div>
       <div>
-        <p className="text-2xl text-center">
+        <p className="text-xl text-center">
           INSERT LONG DESCRIPTION HERE: At vero eos et accusamus et iusto odio
           dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
           atque corrupti quos dolores et quas molestias excepturi sint occaecati
@@ -54,17 +54,18 @@ const HomePage = async () => {
               {listings.slice(0, 5).map((listing) => (
                 <Link
                   href={`/listings/${listing.id}`}
-                  className="block cursor-pointer border rounded-lg w-full p-5 hover:bg-gray-50 transition"
+                  className="block cursor-pointer border rounded-lg w-full p-3 hover:bg-gray-50 transition"
+                  key={listing.id}
                 >
                   <div className="flex justify-between items-center">
                     <div>
-                      <p className="font-bold text-xl">{listing.jobTitle}</p>
+                      <p className="font-bold">{listing.jobTitle}</p>
                       <p className="!-mt-1 muted-text">
                         add a short description here
                       </p>
                     </div>
                     <div>
-                      <CornerUpRightIcon className="h-5 w-5" />
+                      <CornerUpRightIcon className="h-4 w-4" />
                     </div>
                   </div>
                 </Link>

@@ -2,7 +2,6 @@ import "@/styles/globals.css";
 import { GetOrganization } from "@/src/requests/organizations/useGetOrganization";
 import Image from "next/image";
 import getSlug from "@/src/utilities/getSlug";
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/src/utilities/cn";
 import { buttonVariants } from "@/src/components/shadcn/Button";
@@ -51,37 +50,39 @@ export default async function RootLayout({
             `}
         </style>
       </head>
-      <body className="max-w-4xl mx-auto py-2 px-5">
-        <div className="flex justify-between items-center">
-          <Link href="/">
-            {organization?.logo?.url ? (
-              <Image
-                src={organization?.logo?.url}
-                height={50}
-                width={50}
-                alt={organization?.title || "Organization Logo"}
-                className="object-contain"
-              />
-            ) : (
-              <div className="font-black text-lg ">{organization?.title}</div>
-            )}
-          </Link>
-          <div className="flex">
-            <Link
-              href="/listings"
-              className={cn(buttonVariants({ variant: "link" }))}
-            >
-              Listings
+      <body className="max-w-4xl mx-auto py-2 px-5 min-h-screen flex flex-col justify-between">
+        <main>
+          <div className="flex justify-between items-center">
+            <Link href="/">
+              {organization?.logo?.url ? (
+                <Image
+                  src={organization?.logo?.url}
+                  height={50}
+                  width={50}
+                  alt={organization?.title || "Organization Logo"}
+                  className="object-contain"
+                />
+              ) : (
+                <div className="font-black text-lg ">{organization?.title}</div>
+              )}
             </Link>
-            <Link
-              href="/applications"
-              className={cn(buttonVariants({ variant: "link" }))}
-            >
-              My Applications
-            </Link>
+            <div className="flex">
+              <Link
+                href="/listings"
+                className={cn(buttonVariants({ variant: "link" }))}
+              >
+                Jobs
+              </Link>
+              <Link
+                href="/applications"
+                className={cn(buttonVariants({ variant: "link" }))}
+              >
+                My Applications
+              </Link>
+            </div>
           </div>
-        </div>
-        {children}
+          {children}
+        </main>
         <footer className="flex justify-between items-center mt-20 mb-5">
           <div className="text-sm font-semibold">
             &copy; {new Date().getFullYear()} {organization.title}. All rights
