@@ -22,13 +22,15 @@ interface AddApplicationProps {
     note?: string;
     relocate?: boolean;
   };
+  listingId: string;
 }
 
-const AddApplication = async ({
+export const AddApplication = async ({
   body,
+  listingId,
 }: AddApplicationProps): Promise<Application> => {
   const api = useEmpleoApi();
-  const { data } = await api.post("/listings", body);
+  const { data } = await api.post(`/listings/${listingId}/applications`, body);
 
   return data;
 };

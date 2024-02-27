@@ -83,6 +83,13 @@ export interface BaseListing {
 
 export interface Listing extends BaseListing {}
 
+export enum Gender {
+  male = "male",
+  female = "female",
+  prefer_not_to_say = "prefer_not_to_say",
+  other = "other",
+}
+
 export interface BaseApplication {
   id: string;
   firstName: string;
@@ -94,4 +101,3 @@ export interface BaseApplication {
 }
 
 export interface Application extends BaseApplication {}
-

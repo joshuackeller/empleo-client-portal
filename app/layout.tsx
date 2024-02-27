@@ -51,8 +51,8 @@ export default async function RootLayout({
             `}
         </style>
       </head>
-      <body className="max-w-4xl mx-auto py-2 px-5 min-h-screen flex flex-col justify-between">
-        <main>
+      <body className="py-2 px-5 min-h-screen flex flex-col justify-between !m-0">
+        <main className="max-w-4xl mx-auto w-full">
           <div className="flex justify-between items-center">
             <Link href="/">
               {organization?.logo?.url ? (

@@ -1,5 +1,6 @@
 "use client";
 
+import ApplicationForm from "@/src/components/forms/ApplicationForm";
 import RestrictedContentWrapper from "@/src/components/wrappers/RestrictedContentWrapper";
 import { GetListing } from "@/src/requests/listings/useGetListing";
 import { cn } from "@/src/utilities/cn";
@@ -23,17 +24,23 @@ const SingleListingApplicationPage = () => {
 
   return (
     <>
-      <div className="flex gap-x-5">
+      <div className="flex">
         <Link
           href={`/listings/${listingId}`}
-          className={cn(path === `/listings/${listingId}` && "font-semibold")}
+          className={cn(
+            "py-2 pr-12 text-gray-700 hover:text-black hover:border-b-2",
+            path === `/listings/${listingId}` &&
+              "text-black border-b-2 border-black"
+          )}
         >
           Description
         </Link>
         <Link
           href={`/listings/${listingId}/application`}
           className={cn(
-            path === `/listings/${listingId}/application` && "font-semibold"
+            "py-2 pr-12 text-gray-700 hover:text-black hover:border-b-2",
+            path === `/listings/${listingId}/application` &&
+              "text-black border-b-2 border-black"
           )}
         >
           Application
@@ -41,7 +48,7 @@ const SingleListingApplicationPage = () => {
       </div>
       <div className="mt-3 flex-1 w-full">
         <RestrictedContentWrapper>
-          <div>insert application form here</div>
+          <ApplicationForm listingId={listingId} />
         </RestrictedContentWrapper>
       </div>
     </>

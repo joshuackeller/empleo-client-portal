@@ -26,7 +26,7 @@ const Layout = async ({
       </Link>
       <div className="my-12">
         <h1>{listing.jobTitle}</h1>
-        <p>add a short description</p>
+        <p className="muted-text">add a short description</p>
       </div>
       <div className="flex w-full flex-1">
         <div className="w-[225px] space-y-5 mr-5 py-1 pr-1">

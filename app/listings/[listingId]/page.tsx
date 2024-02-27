@@ -12,17 +12,23 @@ const SingleListingPage = async ({
   const path = headers().get("x-path");
   return (
     <>
-      <div className="flex gap-x-5">
+      <div className="flex">
         <Link
           href={`/listings/${listingId}`}
-          className={cn(path === `/listings/${listingId}` && "font-semibold")}
+          className={cn(
+            "py-2 pr-12 text-gray-700 hover:text-black hover:border-b-2",
+            path === `/listings/${listingId}` &&
+              "text-black border-b-2 border-black"
+          )}
         >
           Description
         </Link>
         <Link
           href={`/listings/${listingId}/application`}
           className={cn(
-            path === `/listings/${listingId}/application` && "font-semibold"
+            "py-2 pr-12 text-gray-700 hover:text-black hover:border-b-2",
+            path === `/listings/${listingId}/application` &&
+              "text-black font-semibold  border-b-2 border-black"
           )}
         >
           Application
