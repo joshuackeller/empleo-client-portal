@@ -15,7 +15,7 @@ import {
 } from "../shadcn/Dialog";
 import RequestLinkForm from "../auth/RequestLinkForm";
 
-export const AUTH_TOKEN = "AUTH_TOKEN";
+const AUTH_TOKEN = "AUTH_TOKEN";
 
 interface AuthContextProps {
   token: string | null;

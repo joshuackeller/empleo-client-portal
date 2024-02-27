@@ -3,6 +3,7 @@ import { GetListing } from "@/src/requests/listings/useGetListing";
 import Link from "next/link";
 import { cn } from "@/src/utilities/cn";
 import { buttonVariants } from "@/src/components/shadcn/Button";
+import GetOrgSlug from "@/src/utilities/GetOrgSlug";
 
 const Layout = async ({
   children,
@@ -13,7 +14,8 @@ const Layout = async ({
     listingId: string;
   };
 }) => {
-  const listing = await GetListing({ listingId });
+  const slug = GetOrgSlug();
+  const listing = await GetListing({ listingId, slug });
   return (
     <div className="mt-5">
       <Link
@@ -23,11 +25,11 @@ const Layout = async ({
         &larr; All Positions
       </Link>
       <div className="my-12">
-        <p className="text-5xl font-black ">{listing.jobTitle}</p>
+        <h1>{listing.jobTitle}</h1>
         <p>add a short description</p>
       </div>
-      <div className="flex">
-        <div className="w-[200px] space-y-5 mr-5">
+      <div className="flex w-full flex-1">
+        <div className="w-[225px] space-y-5 mr-5 py-1 pr-1">
           <div>
             <p className="-mb-2 uppercase text-xs text-gray-500">Location</p>
             <p>{listing.location}</p>
@@ -43,7 +45,7 @@ const Layout = async ({
             <p>{listing.salaryRange}</p>
           </div>
         </div>
-        <div>{children}</div>
+        <div className="w-full flex-1">{children}</div>
       </div>
     </div>
   );

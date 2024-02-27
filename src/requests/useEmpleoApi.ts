@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const useEmpleoApi = () => {
-  let slug;
-
+const useEmpleoApi = (slug?: string) => {
   if (typeof window !== "undefined") {
     const host = window.location.host;
     const domainParts = host.split(".");

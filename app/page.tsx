@@ -2,19 +2,19 @@ import { buttonVariants } from "@/src/components/shadcn/Button";
 import { GetListings } from "@/src/requests/listings/useGetListings";
 import { GetOrganization } from "@/src/requests/organizations/useGetOrganization";
 import { cn } from "@/src/utilities/cn";
-import getSlug from "@/src/utilities/getSlug";
+import GetOrgSlug from "@/src/utilities/GetOrgSlug";
 import { CornerUpRightIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const HomePage = async () => {
-  const slug = getSlug();
+  const slug = GetOrgSlug();
   if (!slug) {
     notFound();
   }
 
   const organization = await GetOrganization({ slug });
-  const listings = await GetListings({});
+  const listings = await GetListings({ slug });
 
   return (
     <div>
@@ -46,7 +46,7 @@ const HomePage = async () => {
         </p>
       </div>
       <div id="open-positions" className="flex gap-10 my-36 relative">
-        <div className="radial-gradient-primary h-[500px] w-[500px] absolute " />
+        <div className="radial-gradient-primary h-[500px] w-[500px] absolute -z-10" />
         <div className="font-black text-3xl mt-4">Open Positions</div>
         <div className="flex-1 space-y-3">
           {listings.length > 0 ? (
@@ -54,12 +54,12 @@ const HomePage = async () => {
               {listings.slice(0, 5).map((listing) => (
                 <Link
                   href={`/listings/${listing.id}`}
-                  className="block cursor-pointer border rounded-lg w-full p-3 hover:bg-gray-50 transition"
+                  className="block cursor-pointer border rounded-lg w-full p-3 bg-white transition"
                   key={listing.id}
                 >
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center ">
                     <div>
-                      <p className="font-bold">{listing.jobTitle}</p>
+                      <p className=" font-bold">{listing.jobTitle}</p>
                       <p className="!-mt-1 muted-text">
                         add a short description here
                       </p>
@@ -75,12 +75,15 @@ const HomePage = async () => {
                   href="/listings"
                   className={cn(buttonVariants({ size: "lg" }))}
                 >
-                  See All Listings
+                  See All Positions
                 </Link>
               </div>
             </>
           ) : (
-            <div>No Listings Found</div>
+            <div className="text-center">
+              <h3>No Positions Found</h3>
+              <p>Check back later for updates</p>
+            </div>
           )}
         </div>
       </div>

@@ -1,17 +1,17 @@
 import "@/styles/globals.css";
 import { GetOrganization } from "@/src/requests/organizations/useGetOrganization";
 import Image from "next/image";
-import getSlug from "@/src/utilities/getSlug";
 import Link from "next/link";
 import { cn } from "@/src/utilities/cn";
 import { buttonVariants } from "@/src/components/shadcn/Button";
+import GetOrgSlug from "@/src/utilities/GetOrgSlug";
 
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const slug = getSlug();
+  const slug = GetOrgSlug();
   if (!slug) {
     throw Error("Not Found");
   }
@@ -31,7 +31,8 @@ export default async function RootLayout({
           }
         />
         <style>
-          {`.org-primary {
+          {`
+            .org-primary {
              background-color: ${organization.primaryColor};
             }
             .org-secondary {
@@ -75,7 +76,7 @@ export default async function RootLayout({
               </Link>
               <Link
                 href="/applications"
-                className={cn(buttonVariants({ variant: "link" }))}
+                className={cn("!pr-0", buttonVariants({ variant: "link" }))}
               >
                 My Applications
               </Link>

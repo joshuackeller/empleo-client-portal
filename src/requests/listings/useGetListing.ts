@@ -1,16 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import useEmpleoApi from "../useEmpleoApi";
-import { Listing, Organization } from "@/src/utilities/interfaces";
+import { Listing } from "@/src/utilities/interfaces";
 import ListingQueryKeys from ".";
 
 interface GetListingProps {
   listingId: string;
+  slug?: string;
 }
 
 export const GetListing = async ({
   listingId,
+  slug,
 }: GetListingProps): Promise<Listing> => {
-  const api = useEmpleoApi();
+  const api = useEmpleoApi(slug);
 
   const { data } = await api.get(`/listings/${listingId}`);
 

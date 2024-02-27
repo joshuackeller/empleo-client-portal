@@ -53,7 +53,7 @@ const ListingsPage = () => {
           className="w-full"
           placeholder="Search..."
         />
-        <div className="absolute right-2.5 top-2.5 h-full">
+        <div className="absolute right-2.5 top-3 h-full">
           {isFetching ? (
             <CircleDashedIcon className="h-4 w-4 animate-spin" />
           ) : (
@@ -71,7 +71,7 @@ const ListingsPage = () => {
           listings.map((listing) => (
             <Link
               href={`/listings/${listing.id}`}
-              className="block cursor-pointer border rounded-lg w-full p-3 hover:bg-gray-50 transition"
+              className="block cursor-pointer border rounded-lg w-full p-3 bg-white transition"
               key={listing.id}
             >
               <div className="flex justify-between items-center">

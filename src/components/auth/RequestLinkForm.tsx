@@ -13,9 +13,9 @@ import {
 } from "../shadcn/Form";
 import { Input } from "../shadcn/Input";
 import { Button } from "../shadcn/Button";
-import useRequestLink from "@/src/requests/auth/useRequestLink";
+import { RequestLink } from "@/src/requests/auth/useRequestLink";
 import { CheckCircle2Icon, CircleDashedIcon } from "lucide-react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import Turnstile from "react-turnstile";
 import { useState } from "react";
 
@@ -31,27 +31,33 @@ const RequestLinkForm = () => {
     },
   });
 
-  const { mutate: requestLink, isPending, isSuccess } = useRequestLink();
-
-  const { asPath } = useRouter();
+  const pathname = usePathname();
 
   const [cloudflareToken, setCloudflareToken] = useState<string>("");
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [isPending, setIsPending] = useState<boolean>(false);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (!isPending) {
-      requestLink({
-        body: {
-          ...values,
-          cloudflareToken,
-          returnRoute: asPath,
-        },
-      });
+      setIsPending(true);
+      try {
+        await RequestLink({
+          body: {
+            ...values,
+            cloudflareToken,
+            returnRoute: pathname,
+          },
+        });
+      } catch {
+        setIsPending(false);
+      }
+      setIsSuccess(true);
+      setIsPending(false);
     }
   };
-
   if (isSuccess) {
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mt-5">
         <CheckCircle2Icon className="h-6 w-6" />
         <div className="text-lg font-bold mt-1">Email Sent!</div>
       </div>
@@ -60,7 +66,7 @@ const RequestLinkForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 w-full">
         <FormField
           control={form.control}
           name="email"

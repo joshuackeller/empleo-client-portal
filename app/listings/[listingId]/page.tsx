@@ -1,12 +1,14 @@
 import { GetListing } from "@/src/requests/listings/useGetListing";
 import { cn } from "@/src/utilities/cn";
+import GetOrgSlug from "@/src/utilities/GetOrgSlug";
 import { headers } from "next/headers";
 import Link from "next/link";
 
 const SingleListingPage = async ({
   params: { listingId },
 }: { params: { listingId: string } }) => {
-  const listing = await GetListing({ listingId });
+  const slug = GetOrgSlug();
+  const listing = await GetListing({ listingId, slug });
   const path = headers().get("x-path");
   return (
     <>
@@ -26,7 +28,12 @@ const SingleListingPage = async ({
           Application
         </Link>
       </div>
-      <div>{listing.jobDescription}</div>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: listing.jobDescription || "No description provided",
+        }}
+        className="mt-3"
+      />
     </>
   );
 };

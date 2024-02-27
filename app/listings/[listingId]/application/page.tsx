@@ -1,13 +1,26 @@
+"use client";
+
+import RestrictedContentWrapper from "@/src/components/wrappers/RestrictedContentWrapper";
 import { GetListing } from "@/src/requests/listings/useGetListing";
 import { cn } from "@/src/utilities/cn";
-import { headers } from "next/headers";
+import { Listing } from "@/src/utilities/interfaces";
 import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const SingleListingApplicationPage = async ({
-  params: { listingId },
-}: { params: { listingId: string } }) => {
-  const listing = await GetListing({ listingId });
-  const path = headers().get("x-path");
+const SingleListingApplicationPage = () => {
+  const path = usePathname();
+
+  const { listingId } = useParams<{ listingId: string }>();
+  const [listing, setListing] = useState<Listing | undefined>();
+
+  useEffect(() => {
+    const getListing = async () => {
+      setListing(await GetListing({ listingId }));
+    };
+    getListing();
+  }, []);
+
   return (
     <>
       <div className="flex gap-x-5">
@@ -26,7 +39,11 @@ const SingleListingApplicationPage = async ({
           Application
         </Link>
       </div>
-      <div>form</div>
+      <div className="mt-3 flex-1 w-full">
+        <RestrictedContentWrapper>
+          <div>insert application form here</div>
+        </RestrictedContentWrapper>
+      </div>
     </>
   );
 };
