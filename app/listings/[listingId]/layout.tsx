@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { GetListing } from "@/src/requests/listings/useGetListing";
+import { GetListing } from "@/src/requests/listings/GetListing";
 import Link from "next/link";
 import { cn } from "@/src/utilities/cn";
 import { buttonVariants } from "@/src/components/shadcn/Button";

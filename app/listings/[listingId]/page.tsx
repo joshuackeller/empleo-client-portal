@@ -1,4 +1,4 @@
-import { GetListing } from "@/src/requests/listings/useGetListing";
+import { GetListing } from "@/src/requests/listings/GetListing";
 import { cn } from "@/src/utilities/cn";
 import GetOrgSlug from "@/src/utilities/GetOrgSlug";
 import { headers } from "next/headers";
@@ -6,7 +6,9 @@ import Link from "next/link";
 
 const SingleListingPage = async ({
   params: { listingId },
-}: { params: { listingId: string } }) => {
+}: {
+  params: { listingId: string };
+}) => {
   const slug = GetOrgSlug();
   const listing = await GetListing({ listingId, slug });
   const path = headers().get("x-path");

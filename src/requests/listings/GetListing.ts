@@ -1,7 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
 import useEmpleoApi from "../useEmpleoApi";
 import { Listing } from "@/src/utilities/interfaces";
-import ListingQueryKeys from ".";
 
 interface GetListingProps {
   listingId: string;
@@ -18,13 +16,3 @@ export const GetListing = async ({
 
   return data;
 };
-
-const useGetListing = (listingId: string) => {
-  return useQuery({
-    queryFn: () => GetListing({ listingId }),
-    queryKey: ListingQueryKeys.single(listingId),
-    enabled: !!listingId,
-  });
-};
-
-export default useGetListing;

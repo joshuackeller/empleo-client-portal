@@ -1,6 +1,6 @@
 "use client";
 
-import { GetListings } from "@/src/requests/listings/useGetListings";
+import { GetListings } from "@/src/requests/listings/GetListings";
 import { CircleDashedIcon, CornerUpRightIcon } from "lucide-react";
 import Link from "next/link";
 import { debounce } from "lodash";

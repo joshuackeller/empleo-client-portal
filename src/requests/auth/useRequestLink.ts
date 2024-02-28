@@ -1,4 +1,3 @@
-import useCustomMutation from "../useCustomMutation";
 import useEmpleoApi from "../useEmpleoApi";
 
 interface RequestLinkProps {
@@ -17,11 +16,3 @@ export const RequestLink = async ({ body, slug }: RequestLinkProps) => {
 
   return data;
 };
-
-const useRequestLink = () => {
-  return useCustomMutation({
-    mutationFn: RequestLink,
-  });
-};
-
-export default useRequestLink;

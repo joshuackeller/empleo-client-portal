@@ -12,7 +12,7 @@ import {
 } from "../shadcn/Form";
 import { Input } from "../shadcn/Input";
 import { Button } from "../shadcn/Button";
-import { AddApplication } from "@/src/requests/applications/useAddApplication";
+import { AddApplication } from "@/src/requests/applications/CreateApplication";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChangeEvent, useState } from "react";
 import { Textarea } from "../shadcn/Textarea";

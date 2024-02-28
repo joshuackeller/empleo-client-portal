@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/src/components/shadcn/Card";
-import useGetListings from "@/src/requests/listings/useGetListings";
+import useGetListings from "@/src/requests/listings/GetListings";
 import { useRouter } from "next/router";
 
 const ListingsCards = () => {

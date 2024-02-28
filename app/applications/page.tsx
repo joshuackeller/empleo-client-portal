@@ -8,7 +8,7 @@ import Link from "next/link";
 import RestrictedContentWrapper, {
   AUTH_TOKEN,
 } from "@/src/components/wrappers/RestrictedContentWrapper";
-import { GetApplications } from "@/src/requests/applications/useGetApplications";
+import { GetApplications } from "@/src/requests/applications/GetApplications";
 import { Application } from "@/src/utilities/interfaces";
 import useQuery from "@/src/utilities/useQuery";
 import useGetToken from "@/src/utilities/useGetToken";
@@ -44,14 +44,16 @@ const ApplicationsPage = () => {
           <FolderIcon className="h-5 w-5" />
           My Applications
         </Link>
-        <Button
-          variant="ghost"
-          className="gap-x-2 w-full !justify-start"
-          onClick={logOut}
-        >
-          <LogOutIcon className="h-5 w-5" />
-          Leave Account
-        </Button>
+        {!!token && (
+          <Button
+            variant="ghost"
+            className="gap-x-2 w-full !justify-start"
+            onClick={logOut}
+          >
+            <LogOutIcon className="h-5 w-5" />
+            Leave Account
+          </Button>
+        )}
       </div>
       <div className="w-full flex-1">
         <h3>My Applications</h3>
