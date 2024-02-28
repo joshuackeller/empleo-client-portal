@@ -1,6 +1,6 @@
 "use client";
 
-import ApplicationForm from "@/src/components/forms/ApplicationFo";
+import ApplicationForm from "@/src/components/forms/ApplicationForm";
 import { buttonVariants } from "@/src/components/shadcn/Button";
 import { Skeleton } from "@/src/components/shadcn/Skeleton";
 import RestrictedContentWrapper from "@/src/components/wrappers/RestrictedContentWrapper";
