@@ -1,6 +1,6 @@
 import { buttonVariants } from "@/src/components/shadcn/Button";
 import { GetListings } from "@/src/requests/listings/GetListings";
-import { GetOrganization } from "@/src/requests/organizations/useGetOrganization";
+import { GetOrganization } from "@/src/requests/organizations/GetOrganization";
 import { cn } from "@/src/utilities/cn";
 import GetOrgSlug from "@/src/utilities/GetOrgSlug";
 import { CornerUpRightIcon } from "lucide-react";

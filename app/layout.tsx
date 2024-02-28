@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { GetOrganization } from "@/src/requests/organizations/useGetOrganization";
+import { GetOrganization } from "@/src/requests/organizations/GetOrganization";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/src/utilities/cn";
