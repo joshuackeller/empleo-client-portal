@@ -1,5 +1,4 @@
 import { cn } from "@/src/utilities/cn";
-import { Dispatch, SetStateAction } from "react";
 
 interface YesNoQuestionProps {
   value: boolean | undefined;
@@ -13,7 +12,7 @@ const YesNoQuestion = ({ value, onChange }: YesNoQuestionProps) => {
         type="button"
         onClick={() => onChange(true)}
         className={cn(
-          "rounded-l border text-gray-400 border-gray-300 px-4 py-1.5",
+          "rounded-l border text-gray-400 border-gray-300 px-4 py-[5px]",
           value === true && "bg-blue-50 text-blue-700 border-blue-700",
           value === false && "border-r-0"
         )}
@@ -24,7 +23,7 @@ const YesNoQuestion = ({ value, onChange }: YesNoQuestionProps) => {
         type="button"
         onClick={() => onChange(false)}
         className={cn(
-          "rounded-r border text-gray-400 border-gray-300 border-l-0 px-4 py-1.5",
+          "rounded-r border text-gray-400 border-gray-300 border-l-0 px-4 py-[5px]",
           value === false && "bg-blue-50 text-blue-800 border-l border-blue-800"
         )}
       >

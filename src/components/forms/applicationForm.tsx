@@ -14,35 +14,18 @@ import { Input } from "../shadcn/Input";
 import { Button } from "../shadcn/Button";
 import { AddApplication } from "@/src/requests/applications/useAddApplication";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/src/components/shadcn/Select";
-import { Gender } from "@/src/utilities/interfaces";
-import YesNoQuestion from "../fields/YesNoQuestion";
+import { ChangeEvent, useState } from "react";
+import { Textarea } from "../shadcn/Textarea";
+import { Label } from "../shadcn/Label";
 
 const formSchema = z.object({
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
+  firstName: z.string(),
+  lastName: z.string(),
   phone: z.string().optional(),
-  email: z.string().optional(),
-  gender: z.string().optional(),
-  address: z.string().optional(),
-  city: z.string().optional(),
-  state: z.string().optional(),
-  zip: z.string().optional(),
-  usCitizen: z.boolean(),
-  workVisa: z.boolean().optional(),
-  languages: z.string().optional(),
-  availableStartDate: z.string().optional(),
   note: z.string().optional(),
-  relocate: z.boolean().optional(),
+  linkedInUrl: z.string().url().optional(),
+  resume: z.any().optional(),
+  coverLetter: z.any().optional(),
 });
 
 interface ApplicationFormProps {
@@ -57,33 +40,17 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
     defaultValues: {
       firstName: "",
       lastName: "",
-      phone: "",
-      email: "",
-      gender: "",
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-      languages: "",
-      availableStartDate: "",
-      note: "",
-      usCitizen: undefined,
+      note: undefined,
+      phone: undefined,
+      resume: "",
+      coverLetter: "",
     },
   });
-
-  const [usCitizen, setUsCitizen] = useState<boolean | undefined>();
-  const [workVisa, setWorkVisa] = useState<boolean | undefined>();
-  const [relocate, setRelocate] = useState<boolean | undefined>();
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsPending(true);
     AddApplication({
-      body: {
-        ...values,
-        usCitizen,
-        workVisa,
-        relocate,
-      },
+      body: values,
       listingId,
     });
     setIsPending(false);
@@ -92,7 +59,7 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2.5">
           <div>
             <FormField
               control={form.control}
@@ -126,30 +93,27 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
           <div>
             <FormField
               control={form.control}
-              name="gender"
+              name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Gender</FormLabel>
+                  <FormLabel>Phone</FormLabel>
                   <FormControl>
-                    <Select
-                      onValueChange={(val) => form.setValue("gender", val)}
-                      {...field}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Gender" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          <SelectLabel>Gender</SelectLabel>
-                          <SelectItem value={Gender.female}>Female</SelectItem>
-                          <SelectItem value={Gender.male}>Male</SelectItem>
-                          <SelectItem value={Gender.prefer_not_to_say}>
-                            Prefer Not To Say
-                          </SelectItem>
-                          <SelectItem value={Gender.other}>Other</SelectItem>
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div>
+            <FormField
+              control={form.control}
+              name="linkedInUrl"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>LinkedIn URL</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -159,43 +123,60 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
           {/* <div>
             <FormField
               control={form.control}
-              name="address"
+              name="resume"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Street Address</FormLabel>
+                  <FormLabel>Resume</FormLabel>
                   <FormControl>
-                    <Input placeholder="" {...field} />
+                    <Input
+                      {...field}
+                      type="file"
+                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        var file = e.target?.files?.[0];
+                        if (file) {
+                          let reader = new FileReader();
+                          reader.onloadend = function () {
+                            const dataUrl = reader.result;
+                            form.setValue("resume", dataUrl);
+                          };
+                          reader.readAsDataURL(file);
+                        }
+                      }}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-          </div>
+          </div> */}
           <div>
-            <FormField
-              control={form.control}
-              name="city"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>City</FormLabel>
-                  <FormControl>
-                    <Input placeholder="" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+            <Label>Resume</Label>
+            <Input
+              type="file"
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                var file = e.target?.files?.[0];
+                if (file) {
+                  let reader = new FileReader();
+                  reader.onloadend = function () {
+                    const dataUrl = reader.result;
+                    form.setValue("resume", dataUrl);
+                  };
+                  reader.readAsDataURL(file);
+                }
+              }}
             />
           </div>
-           */}
           <div>
             <FormField
               control={form.control}
-              name="usCitizen"
+              name="note"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Are you a U.S. Citizen?</FormLabel>
+                  <FormLabel>
+                    Feel free to add anything else we should know!
+                  </FormLabel>
                   <FormControl>
-                    <YesNoQuestion {...field} />
+                    <Textarea {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

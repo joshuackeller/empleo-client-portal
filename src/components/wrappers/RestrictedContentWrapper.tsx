@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode, useEffect, useState } from "react";
 import { Card } from "../shadcn/Card";
 import RequestLinkForm from "../auth/RequestLinkForm";

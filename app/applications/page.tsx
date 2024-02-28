@@ -8,9 +8,20 @@ import Link from "next/link";
 import RestrictedContentWrapper, {
   AUTH_TOKEN,
 } from "@/src/components/wrappers/RestrictedContentWrapper";
+import { GetApplications } from "@/src/requests/applications/useGetApplications";
+import { Application } from "@/src/utilities/interfaces";
+import useQuery from "@/src/utilities/useQuery";
+import useGetToken from "@/src/utilities/useGetToken";
 
 const ApplicationsPage = () => {
   const pathname = usePathname();
+
+  const token = useGetToken();
+  const { data: applications } = useQuery<Application[]>(
+    GetApplications,
+    {},
+    { enabled: !!token }
+  );
 
   const logOut = () => {
     if (typeof window !== "undefined") {
@@ -46,7 +57,9 @@ const ApplicationsPage = () => {
         <h3>My Applications</h3>
         <div className="mt-3">
           <RestrictedContentWrapper>
-            <div>add applications here</div>
+            {applications?.map((application: Application) => (
+              <div>{application.id}</div>
+            ))}
           </RestrictedContentWrapper>
         </div>
       </div>

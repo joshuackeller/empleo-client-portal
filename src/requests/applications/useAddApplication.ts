@@ -8,19 +8,10 @@ interface AddApplicationProps {
   body: {
     firstName?: string;
     lastName?: string;
+    linkedInUrl?: string;
     phone?: string;
-    email?: string;
-    gender?: string;
-    address?: string;
-    city?: string;
-    state?: string;
-    zip?: string;
-    usCitizen?: boolean;
-    workVisa?: boolean;
-    languages?: string;
     availableStartDate?: string;
     note?: string;
-    relocate?: boolean;
   };
   listingId: string;
 }

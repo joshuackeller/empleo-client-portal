@@ -1,10 +1,15 @@
 "use client";
 
 import ApplicationForm from "@/src/components/forms/ApplicationForm";
-import RestrictedContentWrapper from "@/src/components/wrappers/RestrictedContentWrapper";
-import { GetListing } from "@/src/requests/listings/useGetListing";
+import { buttonVariants } from "@/src/components/shadcn/Button";
+import RestrictedContentWrapper, {
+  AUTH_TOKEN,
+} from "@/src/components/wrappers/RestrictedContentWrapper";
+import { GetListingApplication } from "@/src/requests/listings/GetListingApplication";
 import { cn } from "@/src/utilities/cn";
-import { Listing } from "@/src/utilities/interfaces";
+import { Application } from "@/src/utilities/interfaces";
+import useGetToken from "@/src/utilities/useGetToken";
+import useQuery from "@/src/utilities/useQuery";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -13,14 +18,15 @@ const SingleListingApplicationPage = () => {
   const path = usePathname();
 
   const { listingId } = useParams<{ listingId: string }>();
-  const [listing, setListing] = useState<Listing | undefined>();
 
-  useEffect(() => {
-    const getListing = async () => {
-      setListing(await GetListing({ listingId }));
-    };
-    getListing();
-  }, []);
+  const token = useGetToken();
+  const { data: application } = useQuery<Application | null>(
+    GetListingApplication,
+    { listingId },
+    {
+      enabled: !!token,
+    }
+  );
 
   return (
     <>
@@ -48,7 +54,19 @@ const SingleListingApplicationPage = () => {
       </div>
       <div className="mt-3 flex-1 w-full">
         <RestrictedContentWrapper>
-          <ApplicationForm listingId={listingId} />
+          {application ? (
+            <div>
+              <h3>Application Submitted</h3>
+              <Link
+                href="/applications"
+                className={cn("mt-3", buttonVariants())}
+              >
+                View Application
+              </Link>
+            </div>
+          ) : (
+            <ApplicationForm listingId={listingId} />
+          )}
         </RestrictedContentWrapper>
       </div>
     </>
