@@ -67,16 +67,16 @@ export default async function RootLayout({
                 <div className="font-black text-lg ">{organization?.title}</div>
               )}
             </Link>
-            <div className="flex">
+            <div className="flex gap-x-5">
               <Link
                 href="/listings"
-                className={cn(buttonVariants({ variant: "link" }))}
+                className={cn("!p-0", buttonVariants({ variant: "link" }))}
               >
                 Jobs
               </Link>
               <Link
                 href="/applications"
-                className={cn("!pr-0", buttonVariants({ variant: "link" }))}
+                className={cn("!p-0", buttonVariants({ variant: "link" }))}
               >
                 My Applications
               </Link>
@@ -84,7 +84,7 @@ export default async function RootLayout({
           </div>
           {children}
         </main>
-        <footer className="flex justify-between items-center mt-20 mb-5">
+        <footer className="flex justify-between items-center mt-20 mb-5 max-w-4xl mx-auto w-full">
           <div className="text-sm font-semibold">
             &copy; {new Date().getFullYear()} {organization.title}. All rights
             reserved.

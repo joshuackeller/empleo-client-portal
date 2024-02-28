@@ -11,12 +11,14 @@ import {
   FormMessage,
 } from "../shadcn/Form";
 import { Input } from "../shadcn/Input";
-import { Button } from "../shadcn/Button";
-import { AddApplication } from "@/src/requests/applications/CreateApplication";
+import { Button, buttonVariants } from "../shadcn/Button";
+import { CreateApplication } from "@/src/requests/applications/CreateApplication";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChangeEvent, useState } from "react";
 import { Textarea } from "../shadcn/Textarea";
 import { Label } from "../shadcn/Label";
+import Link from "next/link";
+import { cn } from "@/src/utilities/cn";
 
 const formSchema = z.object({
   firstName: z.string(),
@@ -34,6 +36,7 @@ interface ApplicationFormProps {
 
 const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
   const [isPending, setIsPending] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -49,12 +52,28 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsPending(true);
-    AddApplication({
-      body: values,
-      listingId,
-    });
+    try {
+      await CreateApplication({
+        body: values,
+        listingId,
+      });
+      setIsSuccess(true);
+    } catch {
+      setIsSuccess(false);
+    }
     setIsPending(false);
   };
+
+  if (isSuccess === true) {
+    return (
+      <div>
+        <h3>Application Submitted</h3>
+        <Link href="/applications" className={cn("mt-3", buttonVariants())}>
+          View Application
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -120,35 +139,7 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
               )}
             />
           </div>
-          {/* <div>
-            <FormField
-              control={form.control}
-              name="resume"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Resume</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      type="file"
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        var file = e.target?.files?.[0];
-                        if (file) {
-                          let reader = new FileReader();
-                          reader.onloadend = function () {
-                            const dataUrl = reader.result;
-                            form.setValue("resume", dataUrl);
-                          };
-                          reader.readAsDataURL(file);
-                        }
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div> */}
+
           <div>
             <Label>Resume</Label>
             <Input
@@ -185,11 +176,16 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
           </div>
           <div className="flex justify-end mt-3">
             <Button disabled={isPending} type="submit">
-              Add
+              Submit Application
             </Button>
           </div>
         </form>
       </Form>
+      {isSuccess === false && (
+        <p className="text-red-500 text-sm">
+          Could not submit application. Please refresh page and try again.
+        </p>
+      )}
     </div>
   );
 };

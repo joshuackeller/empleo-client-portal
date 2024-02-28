@@ -36,7 +36,7 @@ const RestrictedContentWrapper = ({
   return (
     <div className="w-full">
       {!mounted ? (
-        <Skeleton className="h-60 !w-full rounded-xl" />
+        <Skeleton className="h-60 !w-full" />
       ) : token ? (
         <div>{children}</div>
       ) : (

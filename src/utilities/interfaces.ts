@@ -90,14 +90,41 @@ export enum Gender {
   other = "other",
 }
 
+export interface BaseFile {
+  id: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface File extends BaseFile {}
+
+export enum Status {
+  new = "new",
+  in_review = "in_review",
+  rejected = "rejected",
+  interview = "interview",
+  offer_pending = "offer_pending",
+  offer_accepted = "offer_accepted",
+  offer_rejected = "offer_rejected",
+}
+
 export interface BaseApplication {
   id: string;
   firstName: string;
   lastName: string;
   phone: string;
   email: string;
+  status: Status;
+  listingId: string;
+  resumeId: string;
+  coverLetterId: string;
   createdAt: string;
   updatedAt: string;
 }
 
-export interface Application extends BaseApplication {}
+export interface Application extends BaseApplication {
+  listing: BaseListing;
+  resume: BaseFile;
+  coverLetter: BaseFile;
+}

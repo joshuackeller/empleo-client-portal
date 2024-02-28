@@ -24,7 +24,7 @@ const Layout = async ({
       >
         &larr; All Positions
       </Link>
-      <div className="my-12">
+      <div className="mt-8 mb-12">
         <h1>{listing.jobTitle}</h1>
         <p className="muted-text">add a short description</p>
       </div>

@@ -2,9 +2,8 @@
 
 import ApplicationForm from "@/src/components/forms/ApplicationForm";
 import { buttonVariants } from "@/src/components/shadcn/Button";
-import RestrictedContentWrapper, {
-  AUTH_TOKEN,
-} from "@/src/components/wrappers/RestrictedContentWrapper";
+import { Skeleton } from "@/src/components/shadcn/Skeleton";
+import RestrictedContentWrapper, {} from "@/src/components/wrappers/RestrictedContentWrapper";
 import { GetListingApplication } from "@/src/requests/listings/GetListingApplication";
 import { cn } from "@/src/utilities/cn";
 import { Application } from "@/src/utilities/interfaces";
@@ -12,7 +11,6 @@ import useGetToken from "@/src/utilities/useGetToken";
 import useQuery from "@/src/utilities/useQuery";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 const SingleListingApplicationPage = () => {
   const path = usePathname();
@@ -20,7 +18,7 @@ const SingleListingApplicationPage = () => {
   const { listingId } = useParams<{ listingId: string }>();
 
   const token = useGetToken();
-  const { data: application } = useQuery<Application | null>(
+  const { data: application, isSettled } = useQuery<Application | null>(
     GetListingApplication,
     { listingId },
     {
@@ -64,6 +62,8 @@ const SingleListingApplicationPage = () => {
                 View Application
               </Link>
             </div>
+          ) : !isSettled ? (
+            <Skeleton className="h-60" />
           ) : (
             <ApplicationForm listingId={listingId} />
           )}
