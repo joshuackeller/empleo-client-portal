@@ -69,11 +69,10 @@ const ApplicationUpdateForm = ({
     if (!!application) {
       form.reset({
         firstName: application?.firstName || "",
-        lastName: application?.lastName,
-        linkedInUrl: application?.linkedInUrl,
-        note: application?.note,
-        phone: application?.phone,
-
+        lastName: application?.lastName || "",
+        linkedInUrl: application?.linkedInUrl || undefined,
+        note: application?.note || undefined,
+        phone: application?.phone || undefined,
         resume: undefined,
       });
     }
