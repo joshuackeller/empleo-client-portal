@@ -9,6 +9,8 @@ import Link from "next/link";
 import { ChevronRightIcon } from "lucide-react";
 import { Skeleton } from "@/src/components/shadcn/Skeleton";
 import ApplicationStatusBadge from "@/src/components/other/ApplicationStatusBadge";
+import ApplicationUpdateForm from "@/src/components/forms/ApplicationUpdateForm";
+import RestrictedContentWrapper from "@/src/components/wrappers/RestrictedContentWrapper";
 
 const SingleApplicationPage = () => {
   const { applicationId } = useParams<{ applicationId: string }>();
@@ -30,21 +32,24 @@ const SingleApplicationPage = () => {
         </Link>
       </div>
       <div className="mt-3 space-y-3">
-        {isLoading ? (
-          <>
-            <Skeleton className="h-8 w-full" />
-            <Skeleton className="h-96 w-full" />
-          </>
-        ) : !!application ? (
-          <>
-            <div className="flex justify-between">
-              <h3>{application?.listing.jobTitle}</h3>
-              <ApplicationStatusBadge status={application.status} />
-            </div>
-          </>
-        ) : (
-          <div>Application Not Found</div>
-        )}
+        <RestrictedContentWrapper>
+          {isLoading ? (
+            <>
+              <Skeleton className="h-8 w-full" />
+              <Skeleton className="h-96 w-full" />
+            </>
+          ) : !!application ? (
+            <>
+              <div className="flex justify-between mb-3">
+                <h3>{application?.listing.jobTitle}</h3>
+                <ApplicationStatusBadge status={application.status} />
+              </div>
+              <ApplicationUpdateForm applicationId={applicationId} />
+            </>
+          ) : (
+            <div>Application Not Found</div>
+          )}
+        </RestrictedContentWrapper>
       </div>
     </div>
   );
