@@ -88,7 +88,7 @@ const ListingsPage = () => {
             </Link>
           ))
         ) : (
-          <div>No Listings Found</div>
+          <h4 className="text-center my-10 ">No Listings Found</h4>
         )}
       </div>
     </div>
