@@ -119,6 +119,7 @@ export interface BaseApplication {
   listingId: string;
   resumeId: string | null;
   coverLetterId: string | null;
+  note: string | null;
   createdAt: string;
   updatedAt: string;
 }
