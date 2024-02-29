@@ -1,7 +1,7 @@
 import useEmpleoApi from "../useEmpleoApi";
 import { Application } from "@/src/utilities/interfaces";
 
-interface CreateApplicationProps {
+interface UpdateApplicationProps {
   body: {
     firstName?: string;
     lastName?: string;
@@ -12,15 +12,15 @@ interface CreateApplicationProps {
     resume?: any;
     coverLetter?: any;
   };
-  listingId: string;
+  applicationId: string;
 }
 
-export const CreateApplication = async ({
+export const UpdateApplication = async ({
   body,
-  listingId,
-}: CreateApplicationProps): Promise<Application> => {
+  applicationId,
+}: UpdateApplicationProps): Promise<Application> => {
   const api = useEmpleoApi();
-  const { data } = await api.post(`/listings/${listingId}/applications`, body);
+  const { data } = await api.put(`/applications/${applicationId}`, body);
 
   return data;
 };

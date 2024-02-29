@@ -113,7 +113,7 @@ export interface BaseApplication {
   id: string;
   firstName: string;
   lastName: string;
-  phone: string;
+  phone: string | null;
   address: string;
   city: string;
   state: string;
@@ -131,7 +131,6 @@ export interface BaseApplication {
   workVisaType: string;
   language: string;
   availableStartDate: string;
-  note: string;
   relocate: boolean;
   userId: string;
   resumeUrl: string;
@@ -139,9 +138,11 @@ export interface BaseApplication {
 
   email: string;
   status: Status;
+  linkedInUrl: string | null;
   listingId: string;
-  resumeId: string;
-  coverLetterId: string;
+  resumeId: string | null;
+  coverLetterId: string | null;
+  note: string | null;
   createdAt: string;
   updatedAt: string;
 }
