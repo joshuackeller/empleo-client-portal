@@ -9,6 +9,8 @@ interface CreateApplicationProps {
     phone?: string;
     availableStartDate?: string;
     note?: string;
+    resume?: any;
+    coverLetter?: any;
   };
   listingId: string;
 }

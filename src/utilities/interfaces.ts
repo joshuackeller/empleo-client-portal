@@ -113,12 +113,12 @@ export interface BaseApplication {
   id: string;
   firstName: string;
   lastName: string;
-  phone: string;
-  email: string;
+  phone: string | null;
   status: Status;
+  linkedInUrl: string | null;
   listingId: string;
-  resumeId: string;
-  coverLetterId: string;
+  resumeId: string | null;
+  coverLetterId: string | null;
   createdAt: string;
   updatedAt: string;
 }
