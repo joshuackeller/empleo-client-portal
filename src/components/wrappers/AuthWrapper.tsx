@@ -15,7 +15,7 @@ import {
 } from "../shadcn/Dialog";
 import RequestLinkForm from "../auth/RequestLinkForm";
 
-const AUTH_TOKEN = "AUTH_TOKEN";
+const CLIENT_AUTH_TOKEN = "CLIENT_AUTH_TOKEN";
 
 interface AuthContextProps {
   token: string | null;
@@ -37,7 +37,7 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      let localToken = localStorage.getItem(AUTH_TOKEN);
+      let localToken = localStorage.getItem(CLIENT_AUTH_TOKEN);
       if (localToken) {
         setToken(localToken);
       }

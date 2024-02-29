@@ -5,7 +5,7 @@ import { Card } from "../shadcn/Card";
 import RequestLinkForm from "../auth/RequestLinkForm";
 import { Skeleton } from "../shadcn/Skeleton";
 
-export const AUTH_TOKEN = "AUTH_TOKEN";
+export const CLIENT_AUTH_TOKEN = "CLIENT_AUTH_TOKEN";
 
 interface RestrictedContentWrapperProps {
   children: ReactNode;
@@ -22,7 +22,7 @@ const RestrictedContentWrapper = ({
   useEffect(() => {
     if (typeof window !== "undefined") {
       setMounted(true);
-      let localToken = localStorage.getItem(AUTH_TOKEN);
+      let localToken = localStorage.getItem(CLIENT_AUTH_TOKEN);
       if (localToken) {
         setToken(localToken);
       }
