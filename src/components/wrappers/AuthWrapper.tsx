@@ -15,7 +15,7 @@ import {
 } from "../shadcn/Dialog";
 import RequestLinkForm from "../auth/RequestLinkForm";
 
-export const AUTH_TOKEN = "AUTH_TOKEN";
+const AUTH_TOKEN = "AUTH_TOKEN";
 
 interface AuthContextProps {
   token: string | null;
@@ -50,7 +50,7 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
     >
       {children}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-sm">
           <DialogHeader>
             <DialogTitle>Get Started</DialogTitle>
             <DialogDescription>

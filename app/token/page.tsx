@@ -1,20 +1,21 @@
-import { AUTH_TOKEN } from "@/src/components/wrappers/AuthWrapper";
+"use client";
+
+import { AUTH_TOKEN } from "@/src/components/wrappers/RestrictedContentWrapper";
 import useAuthContext from "@/src/utilities/useAuthContext";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 const ConfirmAccountPage = () => {
-  const { setToken } = useAuthContext();
   const router = useRouter();
-  const {
-    query: { token: routerToken, returnRoute },
-  } = useRouter();
+  const searchParams = useSearchParams();
+
+  const routerToken = searchParams.get("token");
+  const returnRoute = searchParams.get("returnRoute");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       if (!!routerToken) {
         localStorage.setItem(AUTH_TOKEN, routerToken as string);
-        setToken(routerToken as string);
         router.push(returnRoute as string);
       } else {
         router.push("/auth_error");
