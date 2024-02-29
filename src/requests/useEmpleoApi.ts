@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AUTH_TOKEN } from "../components/wrappers/RestrictedContentWrapper";
+import { CLIENT_AUTH_TOKEN } from "../components/wrappers/RestrictedContentWrapper";
 
 const useEmpleoApi = (slug?: string) => {
   let token;
@@ -10,7 +10,7 @@ const useEmpleoApi = (slug?: string) => {
       slug = domainParts[0];
     }
 
-    token = localStorage.getItem(AUTH_TOKEN);
+    token = localStorage.getItem(CLIENT_AUTH_TOKEN);
   }
 
   const api = axios.create({

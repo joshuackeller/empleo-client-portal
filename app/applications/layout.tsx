@@ -5,7 +5,7 @@ import { cn } from "@/src/utilities/cn";
 import { FolderIcon, LogOutIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { AUTH_TOKEN } from "@/src/components/wrappers/RestrictedContentWrapper";
+import { CLIENT_AUTH_TOKEN } from "@/src/components/wrappers/RestrictedContentWrapper";
 import useGetToken from "@/src/utilities/useGetToken";
 import { ReactNode } from "react";
 
@@ -20,7 +20,7 @@ const ApplicationsLayout = ({ children }: ApplicationsLayoutProps) => {
 
   const logOut = () => {
     if (typeof window !== "undefined") {
-      localStorage.removeItem(AUTH_TOKEN);
+      localStorage.removeItem(CLIENT_AUTH_TOKEN);
       window.location.reload();
     }
   };
