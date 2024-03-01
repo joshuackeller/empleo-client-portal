@@ -10,7 +10,9 @@ interface CreateApplicationProps {
     availableStartDate?: string;
     note?: string;
     resume?: any;
+    resumeName?: string;
     coverLetter?: any;
+    coverLetterName?: string;
   };
   listingId: string;
 }

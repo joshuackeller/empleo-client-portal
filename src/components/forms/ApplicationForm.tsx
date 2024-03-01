@@ -27,7 +27,9 @@ const formSchema = z.object({
   note: z.string().optional(),
   linkedInUrl: z.string().url().optional(),
   resume: z.any().optional(),
+  resumeName: z.any().optional(),
   coverLetter: z.any().optional(),
+  coverLetterName: z.any().optional(),
 });
 
 interface ApplicationFormProps {
@@ -45,8 +47,10 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
       lastName: "",
       note: undefined,
       phone: undefined,
-      resume: "",
-      coverLetter: "",
+      resume: undefined,
+      resumeName: undefined,
+      coverLetter: undefined,
+      coverLetterName: undefined,
     },
   });
 
@@ -139,7 +143,6 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
               )}
             />
           </div>
-
           <div>
             <Label>Resume</Label>
             <Input
@@ -147,6 +150,7 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 var file = e.target?.files?.[0];
                 if (file) {
+                  form.setValue("resumeName", file.name);
                   let reader = new FileReader();
                   reader.onloadend = function () {
                     const dataUrl = reader.result;
