@@ -199,9 +199,14 @@ const ApplicationUpdateForm = ({
                   <div className="text-sm font-semibold whitespace-nowrap">
                     Current File
                   </div>
-                  <div className="muted-text w-80 text-ellipsis whitespace-nowrap overflow-hidden">
-                    {application?.resume.url}...
-                  </div>
+                  <a
+                    href={application?.resume?.url}
+                    target="_blank"
+                    rel="noreferer"
+                    className="muted-text text-ellipsis whitespace-nowrap overflow-hidden w-80"
+                  >
+                    {application?.resume.name}
+                  </a>
                 </div>
                 <div
                   onClick={() => setReplaceResume(true)}
@@ -236,15 +241,6 @@ const ApplicationUpdateForm = ({
           </div>
         </form>
       </Form>
-
-      <a
-        href={application?.resume?.url}
-        target="_blank"
-        rel="noreferer"
-        className="muted-text  text-ellipsis whitespace-nowrap overflow-hidden"
-      >
-        test download file
-      </a>
 
       {isSuccess === true && (
         <p className="text-green-500 text-sm">
