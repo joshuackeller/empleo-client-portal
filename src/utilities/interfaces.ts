@@ -92,6 +92,7 @@ export enum Gender {
 
 export interface BaseFile {
   id: string;
+  name: string;
   url: string;
   createdAt: string;
   updatedAt: string;
