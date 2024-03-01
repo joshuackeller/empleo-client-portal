@@ -10,7 +10,9 @@ interface UpdateApplicationProps {
     availableStartDate?: string;
     note?: string;
     resume?: any;
+    resumeName?: any;
     coverLetter?: any;
+    coverLetterName?: any;
   };
   applicationId: string;
 }

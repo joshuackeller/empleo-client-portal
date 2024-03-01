@@ -31,7 +31,9 @@ const formSchema = z.object({
   note: z.string().optional(),
   linkedInUrl: z.string().url().optional(),
   resume: z.any().optional(),
+  resumeName: z.any().optional(),
   coverLetter: z.any().optional(),
+  coverLetterName: z.any().optional(),
 });
 
 interface ApplicationUpdateFormProps {
@@ -62,6 +64,9 @@ const ApplicationUpdateForm = ({
       note: undefined,
       phone: undefined,
       resume: undefined,
+      resumeName: undefined,
+      coverLetter: undefined,
+      coverLetterName: undefined,
     },
   });
 
@@ -74,6 +79,7 @@ const ApplicationUpdateForm = ({
         note: application?.note || undefined,
         phone: application?.phone || undefined,
         resume: undefined,
+        resumeName: undefined,
       });
     }
   }, [application]);
@@ -170,6 +176,7 @@ const ApplicationUpdateForm = ({
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     var file = e.target?.files?.[0];
                     if (file) {
+                      form.setValue("resumeName", file.name);
                       let reader = new FileReader();
                       reader.onloadend = function () {
                         const dataUrl = reader.result;
@@ -192,7 +199,7 @@ const ApplicationUpdateForm = ({
                   <div className="text-sm font-semibold whitespace-nowrap">
                     Current File
                   </div>
-                  <div className="muted-text  text-ellipsis whitespace-nowrap overflow-hidden">
+                  <div className="muted-text w-80 text-ellipsis whitespace-nowrap overflow-hidden">
                     {application?.resume.url}...
                   </div>
                 </div>
@@ -229,6 +236,15 @@ const ApplicationUpdateForm = ({
           </div>
         </form>
       </Form>
+
+      <a
+        href={application?.resume?.url}
+        target="_blank"
+        rel="noreferer"
+        className="muted-text  text-ellipsis whitespace-nowrap overflow-hidden"
+      >
+        test download file
+      </a>
 
       {isSuccess === true && (
         <p className="text-green-500 text-sm">
