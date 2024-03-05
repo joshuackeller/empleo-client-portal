@@ -5,14 +5,22 @@ interface CreateApplicationProps {
   body: {
     firstName?: string;
     lastName?: string;
-    linkedInUrl?: string;
     phone?: string;
+    address?: string;
+    city?: string;
+    state?: string;
+    zipe?: string;
+    linkedInUrl?: string;
     availableStartDate?: string;
-    note?: string;
     resume?: any;
     resumeName?: string;
     coverLetter?: any;
     coverLetterName?: string;
+    note?: string;
+    eeocRace?: string;
+    eeocVeteranStatus?: string;
+    eeocDisabilityStatus?: string;
+    eeocGender?: string;
   };
   listingId: string;
 }
