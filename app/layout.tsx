@@ -5,11 +5,12 @@ import Link from "next/link";
 import { cn } from "@/src/utilities/cn";
 import { buttonVariants } from "@/src/components/shadcn/Button";
 import GetOrgSlug from "@/src/utilities/GetOrgSlug";
+import { ReactNode } from "react";
 
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const slug = GetOrgSlug();
   if (!slug) {
