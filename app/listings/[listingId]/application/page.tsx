@@ -3,27 +3,14 @@
 import ApplicationForm from "@/src/components/forms/ApplicationForm";
 import ApplicationFormLoader from "@/src/components/other/ApplicationFormLoader";
 import { buttonVariants } from "@/src/components/shadcn/Button";
-import { Skeleton } from "@/src/components/shadcn/Skeleton";
 import RestrictedContentWrapper from "@/src/components/wrappers/RestrictedContentWrapper";
 import { GetListingApplication } from "@/src/requests/listings/GetListingApplication";
 import { cn } from "@/src/utilities/cn";
-import { Application, Organization } from "@/src/utilities/interfaces";
+import { Application } from "@/src/utilities/interfaces";
 import useGetToken from "@/src/utilities/useGetToken";
 import useQuery from "@/src/utilities/useQuery";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-
-// linkedInUrlEnabled
-// noteEnabled
-// resumeEnabled
-// coverLetterEnabled
-// availableStartDateEnabled
-// phoneEnabled
-// addressEnabled
-// cityEnabled
-// stateEnabled
-// zipEnabled
-// usAuthorizedEnabled
 
 const SingleListingApplicationPage = () => {
   const path = usePathname();
