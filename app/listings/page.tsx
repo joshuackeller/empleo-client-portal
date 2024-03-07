@@ -78,7 +78,7 @@ const ListingsPage = () => {
                 <div>
                   <p className="font-bold ">{listing.jobTitle}</p>
                   <p className="!-mt-1 muted-text">
-                    add a short description here
+                    {listing.shortDescription}
                   </p>
                 </div>
                 <div>
