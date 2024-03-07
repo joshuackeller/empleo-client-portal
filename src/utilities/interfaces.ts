@@ -128,15 +128,25 @@ export enum Status {
 
 export interface BaseApplication {
   id: string;
+  status: Status;
+  listingId: string;
   firstName: string;
   lastName: string;
+  address: string | null;
+  city: string | null;
+  state: string | null;
+  zip: string | null;
   phone: string | null;
-  status: Status;
+  note: string | null;
   linkedInUrl: string | null;
-  listingId: string;
   resumeId: string | null;
   coverLetterId: string | null;
-  note: string | null;
+  usAuthorized: boolean | null;
+  availableStartDate: string | null;
+  eeocRace: string | null;
+  eeocVeteranStatus: string | null;
+  eeocDisabilityStatus: string | null;
+  eeocGender: Gender | null;
   createdAt: string;
   updatedAt: string;
 }

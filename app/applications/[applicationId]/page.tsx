@@ -11,9 +11,13 @@ import { Skeleton } from "@/src/components/shadcn/Skeleton";
 import ApplicationStatusBadge from "@/src/components/other/ApplicationStatusBadge";
 import ApplicationUpdateForm from "@/src/components/forms/ApplicationUpdateForm";
 import RestrictedContentWrapper from "@/src/components/wrappers/RestrictedContentWrapper";
+import ApplicationUpdateFormCopy from "@/src/components/forms/ApplicationUpdateFormCopy";
 
 const SingleApplicationPage = () => {
-  const { applicationId } = useParams<{ applicationId: string }>();
+  const { applicationId, listingId } = useParams<{
+    applicationId: string;
+    listingId: string;
+  }>();
 
   const token = useGetToken();
   const { data: application, isLoading } = useQuery<Application>(
