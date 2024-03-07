@@ -5,14 +5,22 @@ interface UpdateApplicationProps {
   body: {
     firstName?: string;
     lastName?: string;
-    linkedInUrl?: string;
     phone?: string;
+    address?: string;
+    city?: string;
+    state?: string;
+    zipe?: string;
+    linkedInUrl?: string;
     availableStartDate?: string;
-    note?: string;
     resume?: any;
-    resumeName?: any;
+    resumeName?: string;
     coverLetter?: any;
-    coverLetterName?: any;
+    coverLetterName?: string;
+    note?: string;
+    eeocRace?: string;
+    eeocVeteranStatus?: string;
+    eeocDisabilityStatus?: string;
+    eeocGender?: string;
   };
   applicationId: string;
 }

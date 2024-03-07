@@ -610,14 +610,14 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
                                 <SelectItem value="-">
                                   I choose not to disclose
                                 </SelectItem>
-                                <SelectItem value="female">
+                                <SelectItem value="protected">
                                   I identify as one or more of the
                                   classifications of protected veteran listed.
                                 </SelectItem>
-                                <SelectItem value="male">
+                                <SelectItem value="other">
                                   Other veteran
                                 </SelectItem>
-                                <SelectItem value="other">
+                                <SelectItem value="not_protected">
                                   I am not a protected veteran
                                 </SelectItem>
                               </SelectContent>
@@ -718,7 +718,10 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
                             </Dialog>
                           </FormLabel>
                           <FormControl>
-                            <Select onValueChange={field.onChange}>
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
                               <FormControl>
                                 <SelectTrigger>
                                   <SelectValue placeholder="None Selected" />
@@ -728,11 +731,11 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
                                 <SelectItem value="-">
                                   I choose not to disclose
                                 </SelectItem>
-                                <SelectItem value="female">
+                                <SelectItem value="disabled">
                                   Yes, I have a disability, or have had one in
                                   the past
                                 </SelectItem>
-                                <SelectItem value="male">
+                                <SelectItem value="no_disabled">
                                   No, I do not have a disability and have not
                                   had one in the past
                                 </SelectItem>
