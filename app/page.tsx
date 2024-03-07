@@ -20,6 +20,7 @@ const HomePage = async () => {
     <div>
       <div className="text-center flex flex-col items-center justify-center w-full my-44 relative">
         <p className="text-6xl font-black">Join {organization.title}</p>
+        <p className="text-2xl muted-text">{organization.description}</p>
         <a
           href="#open-positions"
           className={cn("mt-24 z-10", buttonVariants({ size: "lg" }))}
@@ -29,7 +30,7 @@ const HomePage = async () => {
         <div className="radial-gradient-accent h-[500px] w-[500px] absolute translate-x-1/4" />
       </div>
       <div>
-        <p className="text-xl text-center">
+        {/* <p className="text-xl text-center">
           INSERT LONG DESCRIPTION HERE: At vero eos et accusamus et iusto odio
           dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
           atque corrupti quos dolores et quas molestias excepturi sint occaecati
@@ -43,7 +44,10 @@ const HomePage = async () => {
           et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
           delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut
           perferendis doloribus asperiores repellat.
-        </p>
+        </p> */}
+        {organization.longDescription && (
+          <div dangerouslySetInnerHTML={{ __html: organization.longDescription }} />
+        )}
       </div>
       <div id="open-positions" className="flex gap-10 my-36 relative">
         <div className="radial-gradient-primary h-[500px] w-[500px] absolute -z-10" />
@@ -61,7 +65,7 @@ const HomePage = async () => {
                     <div>
                       <p className=" font-bold">{listing.jobTitle}</p>
                       <p className="!-mt-1 muted-text">
-                        add a short description here
+                        {listing.shortDescription}
                       </p>
                     </div>
                     <div>
