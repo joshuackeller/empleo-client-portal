@@ -4,6 +4,7 @@ import Link from "next/link";
 import { cn } from "@/src/utilities/cn";
 import { buttonVariants } from "@/src/components/shadcn/Button";
 import GetOrgSlug from "@/src/utilities/GetOrgSlug";
+import GetEmploymentType from "@/src/utilities/GetEmploymentType";
 
 const Layout = async ({
   children,
@@ -32,17 +33,17 @@ const Layout = async ({
         <div className="w-[225px] space-y-5 mr-5 py-1 pr-1">
           <div>
             <p className="-mb-2 uppercase text-xs text-gray-500">Location</p>
-            <p>{listing.location}</p>
+            <p>{listing.location || "-"}</p>
           </div>
           <div>
             <p className="-mb-2 uppercase text-xs text-gray-500">Type</p>
-            <p>{listing.employmentType}</p>
+            <p>{GetEmploymentType(listing.employmentType)}</p>
           </div>
           <div>
             <p className="-mb-2 uppercase text-xs text-gray-500">
               Salary Estimate
             </p>
-            <p>{listing.salaryRange}</p>
+            <p>{listing.salaryRange || "-"}</p>
           </div>
         </div>
         <div className="w-full flex-1">{children}</div>

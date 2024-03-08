@@ -401,15 +401,15 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
               <div className="muted-text">
                 In addition to the information required to consider your
                 candidacy we invite you to voluntarily provide the following
-                information. This information ensures we meet certain
-                regulatory reporting obligations and also further supports the
-                development, refinement, and execution of our diversity efforts
-                and programs. Information will be kept confidential, used only
-                for legitimate business purposes, and will never be used in
-                making any employment decisions, including hiring decisions.
-                Our company does not discriminate on the basis of any protected 
-                group status under any applicable law.
-                For additional information, please select the information icon next to each question.
+                information. This information ensures we meet certain regulatory
+                reporting obligations and also further supports the development,
+                refinement, and execution of our diversity efforts and programs.
+                Information will be kept confidential, used only for legitimate
+                business purposes, and will never be used in making any
+                employment decisions, including hiring decisions. Our company
+                does not discriminate on the basis of any protected group status
+                under any applicable law. For additional information, please
+                select the information icon next to each question.
               </div>
               <div>
                 {organization?.raceEnabled && (
@@ -435,11 +435,10 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
                                   <p>
                                     For government reporting purposes, we ask
                                     candidates to respond to the race
-                                    self-identification question. Answering
-                                    this question is entirely voluntary.
-                                    Whatever your decision, it will not be
-                                    considered in the hiring process or
-                                    thereafter.
+                                    self-identification question. Answering this
+                                    question is entirely voluntary. Whatever
+                                    your decision, it will not be considered in
+                                    the hiring process or thereafter.
                                   </p>
                                 </DialogDescription>
                               </DialogContent>
@@ -504,11 +503,10 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
                                   <p>
                                     For government reporting purposes, we ask
                                     candidates to respond to the gender
-                                    self-identification question. Answering
-                                    this question is entirely voluntary.
-                                    Whatever your decision, it will not be
-                                    considered in the hiring process or
-                                    thereafter.
+                                    self-identification question. Answering this
+                                    question is entirely voluntary. Whatever
+                                    your decision, it will not be considered in
+                                    the hiring process or thereafter.
                                   </p>
                                 </DialogDescription>
                               </DialogContent>
@@ -554,46 +552,65 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
                               </DialogTrigger>
                               <DialogContent
                                 style={{
-                                  overflow: 'auto',
-                                  height: '90%',
+                                  overflow: "auto",
+                                  height: "90%",
                                 }}
                               >
                                 <DialogHeader>
                                   <DialogTitle className="text-center">
-                                    Voluntary Self-Identification of Veteran Status
+                                    Voluntary Self-Identification of Veteran
+                                    Status
                                   </DialogTitle>
                                 </DialogHeader>
                                 <DialogDescription>
                                   <p>
-                                    If you believe you belong to any of the categories of protected veterans 
-                                    listed below, please indicate by making the appropriate selection. As a 
-                                    government contractor subject to the Vietnam Era Veterans Readjustment 
-                                    Assistance Act (VEVRAA), we request this information in order to measure 
-                                    the effectiveness of the outreach and positive recruitment efforts we undertake 
-                                    pursuant to VEVRAA. Classification of protected categories is as follows:
+                                    If you believe you belong to any of the
+                                    categories of protected veterans listed
+                                    below, please indicate by making the
+                                    appropriate selection. As a government
+                                    contractor subject to the Vietnam Era
+                                    Veterans Readjustment Assistance Act
+                                    (VEVRAA), we request this information in
+                                    order to measure the effectiveness of the
+                                    outreach and positive recruitment efforts we
+                                    undertake pursuant to VEVRAA. Classification
+                                    of protected categories is as follows:
                                     <br></br>
-                                    <br></br>
-                                    A "disabled veteran" is one of the following: 
-                                    a veteran of the U.S. military, ground, naval or air service who is entitled to 
-                                    compensation (or who but for the receipt of military retired pay would be entitled 
-                                    to compensation) under laws administered by the Secretary of Veterans Affairs; or a 
-                                    person who was discharged or released from active duty because of a service-connected 
+                                    <br></br>A "disabled veteran" is one of the
+                                    following: a veteran of the U.S. military,
+                                    ground, naval or air service who is entitled
+                                    to compensation (or who but for the receipt
+                                    of military retired pay would be entitled to
+                                    compensation) under laws administered by the
+                                    Secretary of Veterans Affairs; or a person
+                                    who was discharged or released from active
+                                    duty because of a service-connected
                                     disability.
                                     <br></br>
-                                    <br></br>
-                                    A "recently separated veteran" means any veteran during the three-year period beginning on the date 
-                                    of such veteran's discharge or release from active duty in the U.S. military, ground, naval, or air 
-                                    service.
-                                    <br></br>
-                                    <br></br>
-                                    An "active duty wartime or campaign badge veteran" means a veteran who served on active duty in the 
-                                    U.S. military, ground, naval or air service during a war, or in a campaign or expedition for which a 
-                                    campaign badge has been authorized under the laws administered by the Department of Defense.
+                                    <br></br>A "recently separated veteran"
+                                    means any veteran during the three-year
+                                    period beginning on the date of such
+                                    veteran's discharge or release from active
+                                    duty in the U.S. military, ground, naval, or
+                                    air service.
                                     <br></br>
                                     <br></br>
-                                    An "Armed forces service medal veteran" means a veteran who, while serving on active duty in the U.S. 
-                                    military, ground, naval or air service, participated in a United States military operation for which 
-                                    an Armed Forces service medal was awarded pursuant to Executive Order 12985.
+                                    An "active duty wartime or campaign badge
+                                    veteran" means a veteran who served on
+                                    active duty in the U.S. military, ground,
+                                    naval or air service during a war, or in a
+                                    campaign or expedition for which a campaign
+                                    badge has been authorized under the laws
+                                    administered by the Department of Defense.
+                                    <br></br>
+                                    <br></br>
+                                    An "Armed forces service medal veteran"
+                                    means a veteran who, while serving on active
+                                    duty in the U.S. military, ground, naval or
+                                    air service, participated in a United States
+                                    military operation for which an Armed Forces
+                                    service medal was awarded pursuant to
+                                    Executive Order 12985.
                                   </p>
                                 </DialogDescription>
                               </DialogContent>
@@ -646,8 +663,8 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
                               </DialogTrigger>
                               <DialogContent
                                 style={{
-                                  overflow: 'auto',
-                                  height: '90%',
+                                  overflow: "auto",
+                                  height: "90%",
                                 }}
                               >
                                 <DialogHeader>
@@ -657,41 +674,73 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
                                 </DialogHeader>
                                 <DialogDescription>
                                   <p>
-                                    <strong>Why are you being asked to answer this question?</strong>
+                                    <strong>
+                                      Why are you being asked to answer this
+                                      question?
+                                    </strong>
                                     <br></br>
-                                    We are a federal contractor or subcontractor. The law requires us to provide 
-                                    equal employment opportunity to qualified people with disabilities. We have a 
-                                    goal of having at least 7% of our workers as people with disabilities. The law 
-                                    says we must measure our progress towards this goal. To do this, we must ask 
-                                    applicants and employees if they have a disability or have ever had one. People 
-                                    can become disabled, so we need to ask this question at least every five years.
-                                    <br></br>
-                                    <br></br>
-                                    Completing this question is voluntary, and we hope that you will choose to do so. 
-                                    Your answer is confidential. No one who makes hiring decisions will see it. 
-                                    Your decision to complete the question and your answer will not harm you in any way. 
-                                    If you want to learn more about the law or this form, visit the U.S. Department 
-                                    of Labor’s Office of Federal Contract Compliance Programs (OFCCP) website at {" "}
-                                    <a 
-                                      href="https://www.dol.gov/ofccp" 
-                                      target="_blank" rel="noopener noreferrer" 
-                                      style={{ color: 'blue', textDecoration: 'underline' }}>
-                                        www.dol.gov/ofccp
-                                    </a>.
+                                    We are a federal contractor or
+                                    subcontractor. The law requires us to
+                                    provide equal employment opportunity to
+                                    qualified people with disabilities. We have
+                                    a goal of having at least 7% of our workers
+                                    as people with disabilities. The law says we
+                                    must measure our progress towards this goal.
+                                    To do this, we must ask applicants and
+                                    employees if they have a disability or have
+                                    ever had one. People can become disabled, so
+                                    we need to ask this question at least every
+                                    five years.
                                     <br></br>
                                     <br></br>
-                                    <strong>How do I know if I have a disability?</strong>
+                                    Completing this question is voluntary, and
+                                    we hope that you will choose to do so. Your
+                                    answer is confidential. No one who makes
+                                    hiring decisions will see it. Your decision
+                                    to complete the question and your answer
+                                    will not harm you in any way. If you want to
+                                    learn more about the law or this form, visit
+                                    the U.S. Department of Labor’s Office of
+                                    Federal Contract Compliance Programs (OFCCP)
+                                    website at{" "}
+                                    <a
+                                      href="https://www.dol.gov/ofccp"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      style={{
+                                        color: "blue",
+                                        textDecoration: "underline",
+                                      }}
+                                    >
+                                      www.dol.gov/ofccp
+                                    </a>
+                                    .<br></br>
                                     <br></br>
-                                    A disability is a condition that substantially limits one or more of your “major life 
-                                    activities.” If you have or have ever had such a condition, you are a person with a 
-                                    disability. 
+                                    <strong>
+                                      How do I know if I have a disability?
+                                    </strong>
+                                    <br></br>A disability is a condition that
+                                    substantially limits one or more of your
+                                    “major life activities.” If you have or have
+                                    ever had such a condition, you are a person
+                                    with a disability.
                                     <br></br>
                                     <br></br>
-                                    <strong>Disabilities include, but are not limited to:</strong>
+                                    <strong>
+                                      Disabilities include, but are not limited
+                                      to:
+                                    </strong>
                                   </p>
                                   <ul className="list-disc list-inside">
-                                    <li>Alcohol or other substance use disorder (not currently using drugs illegally)</li>
-                                    <li>Autoimmune disorder, for example, lupus, fibromyalgia, rheumatoid arthritis, HIV/AIDS</li>
+                                    <li>
+                                      Alcohol or other substance use disorder
+                                      (not currently using drugs illegally)
+                                    </li>
+                                    <li>
+                                      Autoimmune disorder, for example, lupus,
+                                      fibromyalgia, rheumatoid arthritis,
+                                      HIV/AIDS
+                                    </li>
                                     <li>Blind or low vision</li>
                                     <li>Cancer (past or present)</li>
                                     <li>Cardiovascular or heart disease</li>
@@ -699,17 +748,51 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
                                     <li>Cerebral palsy</li>
                                     <li>Deaf or serious difficulty hearing</li>
                                     <li>Diabetes</li>
-                                    <li>Disfigurement, for example, disfigurement caused by burns, wounds, accidents, or congenital disorders</li>
+                                    <li>
+                                      Disfigurement, for example, disfigurement
+                                      caused by burns, wounds, accidents, or
+                                      congenital disorders
+                                    </li>
                                     <li>Epilepsy or other seizure disorder</li>
-                                    <li>Gastrointestinal disorders, for example, Crohn's Disease, irritable bowel syndrome</li>
-                                    <li>Intellectual or developmental disability</li>
-                                    <li>Mental health conditions, for example, depression, bipolar disorder, anxiety disorder, schizophrenia, PTSD</li>
-                                    <li>Missing limbs or partially missing limbs</li>
-                                    <li>Mobility impairment, benefiting from the use of a wheelchair, scooter, walker, leg brace(s) and/or other supports</li>
-                                    <li>Nervous system condition, for example, migraine headaches, Parkinson’s disease, multiple sclerosis (MS)</li>
-                                    <li>Neurodivergence, for example, attention-deficit/hyperactivity disorder (ADHD), autism spectrum disorder, dyslexia, dyspraxia, other learning disabilities</li>
-                                    <li>Partial or complete paralysis (any cause)</li>
-                                    <li>Pulmonary or respiratory conditions, for example, tuberculosis, asthma, emphysema</li>
+                                    <li>
+                                      Gastrointestinal disorders, for example,
+                                      Crohn's Disease, irritable bowel syndrome
+                                    </li>
+                                    <li>
+                                      Intellectual or developmental disability
+                                    </li>
+                                    <li>
+                                      Mental health conditions, for example,
+                                      depression, bipolar disorder, anxiety
+                                      disorder, schizophrenia, PTSD
+                                    </li>
+                                    <li>
+                                      Missing limbs or partially missing limbs
+                                    </li>
+                                    <li>
+                                      Mobility impairment, benefiting from the
+                                      use of a wheelchair, scooter, walker, leg
+                                      brace(s) and/or other supports
+                                    </li>
+                                    <li>
+                                      Nervous system condition, for example,
+                                      migraine headaches, Parkinson’s disease,
+                                      multiple sclerosis (MS)
+                                    </li>
+                                    <li>
+                                      Neurodivergence, for example,
+                                      attention-deficit/hyperactivity disorder
+                                      (ADHD), autism spectrum disorder,
+                                      dyslexia, dyspraxia, other learning
+                                      disabilities
+                                    </li>
+                                    <li>
+                                      Partial or complete paralysis (any cause)
+                                    </li>
+                                    <li>
+                                      Pulmonary or respiratory conditions, for
+                                      example, tuberculosis, asthma, emphysema
+                                    </li>
                                     <li>Short stature (dwarfism)</li>
                                     <li>Traumatic brain injury</li>
                                   </ul>
