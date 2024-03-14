@@ -51,6 +51,20 @@ export default async function RootLayout({
             }
             `}
         </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Patua+One&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body className="py-2 px-5 min-h-screen flex flex-col justify-between !m-0">
         <main className="max-w-4xl mx-auto w-full">

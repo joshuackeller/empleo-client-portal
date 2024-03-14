@@ -40,7 +40,7 @@ const SingleListingPage = async ({
         dangerouslySetInnerHTML={{
           __html: listing.jobDescription || "No description provided",
         }}
-        className="mt-3"
+        className="mt-3 richtext"
       />
     </>
   );
