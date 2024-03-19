@@ -46,7 +46,10 @@ const HomePage = async () => {
           perferendis doloribus asperiores repellat.
         </p> */}
         {organization.longDescription && (
-          <div dangerouslySetInnerHTML={{ __html: organization.longDescription }} />
+          <div
+            className="richtext"
+            dangerouslySetInnerHTML={{ __html: organization.longDescription }}
+          />
         )}
       </div>
       <div id="open-positions" className="flex gap-10 my-36 relative">
