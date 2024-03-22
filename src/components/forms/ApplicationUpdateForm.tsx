@@ -35,6 +35,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../shadcn/Select";
+import { toast, useToast } from "../shadcn/use-toast";
 
 const formSchema = z.object({
   firstName: z.string(),
@@ -62,6 +63,7 @@ const ApplicationUpdateForm = ({
   applicationId,
 }: ApplicationUpdateFormProps) => {
   const slug = useGetOrgSlug();
+  const { toast } = useToast();
 
   const [isPending, setIsPending] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
@@ -140,6 +142,9 @@ const ApplicationUpdateForm = ({
   }, [application]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    toast({
+      description: "Your application has been updated",
+    });
     setIsPending(true);
     try {
       await UpdateApplication({
@@ -605,11 +610,11 @@ const ApplicationUpdateForm = ({
         </Button>
       </div>
 
-      {isSuccess === true && (
+      {/* {isSuccess === true && (
         <p className="text-green-500 text-sm">
           Application updated successfully.
         </p>
-      )}
+      )} */}
       {isSuccess === false && (
         <p className="text-red-500 text-sm">
           Could not update application. Please refresh page and try again.

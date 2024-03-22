@@ -6,6 +6,7 @@ import { cn } from "@/src/utilities/cn";
 import { buttonVariants } from "@/src/components/shadcn/Button";
 import GetOrgSlug from "@/src/utilities/GetOrgSlug";
 import { ReactNode } from "react";
+import { Toaster } from "@/src/components/shadcn/toaster";
 
 export default async function RootLayout({
   children,
@@ -98,6 +99,7 @@ export default async function RootLayout({
             </div>
           </div>
           {children}
+          <Toaster />
         </main>
         <footer className="flex justify-between items-center mt-20 mb-5 max-w-4xl mx-auto w-full">
           <div className="text-sm font-semibold">
