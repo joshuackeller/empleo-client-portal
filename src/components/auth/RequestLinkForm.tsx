@@ -15,7 +15,7 @@ import { Input } from "../shadcn/Input";
 import { Button } from "../shadcn/Button";
 import { RequestLink } from "@/src/requests/auth/useRequestLink";
 import { CheckCircle2Icon, CircleDashedIcon } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import Turnstile from "react-turnstile";
 import { useState } from "react";
 
@@ -33,6 +33,8 @@ const RequestLinkForm = () => {
 
   const pathname = usePathname();
 
+  const params = useParams<{ listingId: string }>();
+
   const [cloudflareToken, setCloudflareToken] = useState<string>("");
 
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -45,7 +47,8 @@ const RequestLinkForm = () => {
           body: {
             ...values,
             cloudflareToken,
-            returnRoute: pathname,
+            listingId: params?.listingId,
+            returnRoute: pathname as string,
           },
         });
       } catch {
