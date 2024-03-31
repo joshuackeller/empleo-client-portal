@@ -5,6 +5,7 @@ interface RequestLinkProps {
     email: string;
     returnRoute: string;
     cloudflareToken: string;
+    listingId?: string;
   };
   slug?: string;
 }
