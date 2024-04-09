@@ -29,7 +29,7 @@ const Layout = async ({
         <h1>{listing.jobTitle}</h1>
         <p className="muted-text">{listing.shortDescription}</p>
       </div>
-      <div className="flex w-full flex-1">
+      <div className="md:flex w-full flex-1 ">
         <div className="w-[225px] space-y-5 mr-5 py-1 pr-1">
           <div>
             <p className="-mb-2 uppercase text-xs text-gray-500">Location</p>
@@ -46,7 +46,7 @@ const Layout = async ({
             <p>{listing.salaryRange || "-"}</p>
           </div>
         </div>
-        <div className="w-full flex-1">{children}</div>
+        <div className="w-full flex-1 mt-8 md:mt-0">{children}</div>
       </div>
     </div>
   );

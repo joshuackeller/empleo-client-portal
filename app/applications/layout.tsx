@@ -26,8 +26,8 @@ const ApplicationsLayout = ({ children }: ApplicationsLayoutProps) => {
   };
 
   return (
-    <div className="flex my-10">
-      <div className="w-[200px] space-y-1 mr-5 py-1 pr-1">
+    <div className="md:flex my-10">
+      <div className="mb-5 md:mb-0 md:w-[200px] space-y-1 mr-5 py-1 pr-1">
         <Link
           href="/applications"
           className={cn(

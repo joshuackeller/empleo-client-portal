@@ -7,6 +7,7 @@ import { buttonVariants } from "@/src/components/shadcn/Button";
 import GetOrgSlug from "@/src/utilities/GetOrgSlug";
 import { ReactNode } from "react";
 import { Toaster } from "@/src/components/shadcn/toaster";
+import { Font } from "@/src/utilities/interfaces";
 
 export default async function RootLayout({
   children,
@@ -40,13 +41,58 @@ export default async function RootLayout({
             .org-secondary {
             background-color: ${organization.secondaryColor};
             }
+            h1, h2, h3, h4 {
+               font-family: ${
+                 organization.headerFont === Font.notoSerif
+                   ? "Noto Serif, serif !important"
+                   : "Inter, ui-sans-serif, system-ui, sans-serif  !important"
+               };
+            }
+            div, p, a {
+              font-family: ${
+                organization.bodyFont === Font.notoSerif
+                  ? "Noto Serif, serif  !important"
+                  : "Inter, ui-sans-serif, system-ui, sans-serif  !important"
+              };
+            }
+            .richtext h1, .richtext h2, .richtext h3, .richtext h4 {
+              font-family: ${
+                organization.headerFont === Font.notoSerif
+                  ? "Noto Serif, serif  !important"
+                  : "Inter, ui-sans-serif, system-ui, sans-serif  !important"
+              };
+            }
+            .richtext body, .richtext p,  .richtext a, {
+              font-family: ${
+                organization.bodyFont === Font.notoSerif
+                  ? "Noto Serif, serif  !important"
+                  : "Inter, ui-sans-serif, system-ui, sans-serif  !important"
+              };
+            }
+            .richtext ul {
+              list-style-type: disc;
+              margin-left: 20px;
+            }
+            .richtext ol {
+              list-style-type: decimal;
+              margin-left: 20px;
+            }
+            
             .radial-gradient-primary {
-              background: linear-gradient(243.35deg, ${organization.primaryColor} 32.29%, ${organization.accentColor} 47.31%, ${organization.primaryColor} 75.34%);
+              background: linear-gradient(243.35deg, ${
+                organization.primaryColor
+              } 32.29%, ${organization.accentColor} 47.31%, ${
+            organization.primaryColor
+          } 75.34%);
               opacity: 0.12;
               filter: blur(128px);
             }
             .radial-gradient-accent {
-              background: linear-gradient(243.35deg, ${organization.accentColor} 32.29%, ${organization.primaryColor} 47.31%, ${organization.accentColor} 75.34%);
+              background: linear-gradient(243.35deg, ${
+                organization.accentColor
+              } 32.29%, ${organization.primaryColor} 47.31%, ${
+            organization.accentColor
+          } 75.34%);
               opacity: 0.12;
               filter: blur(128px);
             }
@@ -63,7 +109,7 @@ export default async function RootLayout({
           rel="stylesheet"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@100;200;300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
       </head>
