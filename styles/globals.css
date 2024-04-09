@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply !font-sans;
-}
-
-main {
-  @apply !font-sans;
-}
-
 .opacity-hover {
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -84,16 +76,12 @@ main {
 }
 
 @layer base {
-  * {
-    @apply font-sans;
-  }
-
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
   }
 
   h1 {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+    @apply scroll-m-20 text-5xl md:text-6xl font-black tracking-tight;
   }
 
   h2 {
@@ -133,7 +121,7 @@ main {
   }
 }
 
-.richtext ul {
+/* .richtext ul {
   list-style-type: disc;
   margin-left: 20px;
 }
@@ -141,4 +129,4 @@ main {
 .richtext ol {
   list-style-type: decimal;
   margin-left: 20px;
-}
+} */

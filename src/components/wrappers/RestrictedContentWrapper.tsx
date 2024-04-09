@@ -41,7 +41,7 @@ const RestrictedContentWrapper = ({
         <div>{children}</div>
       ) : (
         <Card className="p-5 mt-3 w-full">
-          <h3>Enter you email to proceed</h3>
+          <h3>Enter your email to proceed</h3>
           <p className="muted-text">
             After entering your email we'll send you a secure link to complete
             the application

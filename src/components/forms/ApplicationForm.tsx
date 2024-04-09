@@ -44,7 +44,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../shadcn/Dialog";
-import { Info } from "lucide-react";
+import { CircleDashedIcon, Info } from "lucide-react";
 
 const formSchema = z.object({
   firstName: z.string(),
@@ -54,7 +54,7 @@ const formSchema = z.object({
   state: z.string().optional(),
   zip: z.string().optional(),
   phone: z.string().optional(),
-  linkedInUrl: z.string().url().optional(),
+  linkedInUrl: z.string().url().or(z.literal("")),
   resume: z.any().optional(),
   resumeName: z.any().optional(),
   coverLetter: z.any().optional(),
@@ -837,6 +837,9 @@ const ApplicationForm = ({ listingId }: ApplicationFormProps) => {
           <div className="flex justify-end !mt-5">
             <Button disabled={isPending} type="submit">
               Submit Application
+              {isPending && (
+                <CircleDashedIcon className="h-4 w-4 animate-spin ml-2" />
+              )}
             </Button>
           </div>
         </form>
