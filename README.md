@@ -1,4 +1,4 @@
-Also see [Empleo Admin Portal](https://github.com/joshuackeller/empleo-admin-portal)
+Also see [Empleo Admin Portal](https://github.com/joshuackeller/empleo-admin-portal) and [Empleo API](https://github.com/joshuackeller/empleo-api)
 
 <img src="./public/home.png">
 <img src="./public/open_positions.png">
